@@ -1,0 +1,84 @@
+/* Empty. Add your own CSS if you like */
+.nav-bar{
+    background-color: #56C5FF !important;
+    border: none;
+    border-bottom: 3px solid #2DA3E0 !important;
+    color: #fff;
+}
+.title{
+    color: #fff!important;
+}
+button.ion-navicon{
+    color: #fff !important;
+}
+ion-side-menu > *, ion-side-menu .item-content{
+    background: #535353 !important;
+    color: #fff !important;
+}
+ion-side-menu header{
+    background: #333 !important;
+    border: none !important;
+    border-bottom: 1px solid #7a7a7a !important;
+}
+ion-side-menu .item{
+    border-color: #464646;
+}
+a.item:after, button.item:after, .item[href] .item-content:after, .item[ng-click] .item-content:after{
+    content: '' !important;
+}
+ion-side-menu *{
+    color: #ececec !important;
+}
+ion-side-menu a:active{
+    background: #333 !important;
+    border: none !important;
+}
+.search-box{
+    margin-top: 20px;
+}
+#search_input_value{
+    border: 1px solid #ddd;
+    width: 100%;
+    margin: 0 auto;
+    border-radius: 0px;
+    padding: 10px 0 10px 10px;
+    height: 50px;
+}
+#search_input_value:focus{
+    border-color: #56C5FF;
+}
+.main-content{
+    padding: 5px;
+}
+.menu-bar{
+    border-bottom: 1px solid #222 !important;
+}
+.menu-bar h1{
+    color: #ddd !important;
+}
+.card{
+    margin-top: 30px;
+/* padding: 0; */
+margin: 30px 0px 0px 0px;
+}
+.bold-span{
+    font-weight: bold;
+}
+.search-result-content{
+    margin: 0px  !important;
+    margin-bottom: 1px !important;
+}
+
+.icon-home{
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background: url(../img/icon/house-32.png);
+    background-size: 16px 16px;
+}
+.grade-b .menu-content, .grade-c .menu-content{
+    border-left: none;
+    border-right: none;
+    left: 0px;
+    right: 0px;
+}
