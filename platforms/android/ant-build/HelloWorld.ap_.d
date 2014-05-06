@@ -56,11 +56,12 @@ F:\xampp\htdocs\dictionary\platforms\android\assets\www\js\app.js \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\js\controllers.js \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\js\database.js \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\js\db_config.js \
+F:\xampp\htdocs\dictionary\platforms\android\assets\www\js\directives.js \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\js\loadDB.js \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\autocomplete \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\jquery.js \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\mobile-angular-ui-scrollable-overthrow.min.js \
+F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\autocomplete\angucomplete.html \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\autocomplete\css \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\autocomplete\fonts \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\autocomplete\img \

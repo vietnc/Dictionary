@@ -23,8 +23,19 @@
     z-index: 9999;
     position: absolute;
     background-color: #f8f8f8;
-    height: 200px !important;
     top: 50px!important;
+
+}
+.hasResult{
+    height: 300px !important;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    margin-top: -1px;
+    width: auto;
 }
 
 .angucomplete-searching {

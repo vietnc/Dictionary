@@ -9,8 +9,9 @@
  */
 
 'use strict';
+var angucompleteAlt = angular.module('angucomplete-alt', []);
 
-angular.module('angucomplete-alt', []).directive('angucompleteAlt', ['$parse', '$http', '$sce', '$timeout', '$ionicScrollDelegate', function($parse, $http, $sce, $timeout, $ionicScrollDelegate) {
+angucompleteAlt.directive('angucompleteAlt', ['$parse', '$http', '$sce', '$timeout', '$ionicScrollDelegate', function($parse, $http, $sce, $timeout, $ionicScrollDelegate) {
         var KEY_DW = 40,
                 KEY_UP = 38,
                 KEY_ES = 27,
@@ -40,22 +41,13 @@ angular.module('angucomplete-alt', []).directive('angucompleteAlt', ['$parse', '
                 clearSelected: '@',
                 overrideSuggestions: '@'
             },
-            template: '<div class="angucomplete-holder">\n\
-<input id="{{id}}_value" ng-model="searchStr" type="text" placeholder="{{placeholder}}" class="{{inputClass}}" ng-focus="resetHideResults()" ng-blur="hideResults()"/>\n\
-<ion-content id="{{id}}_dropdown" class="angucomplete-dropdown" ng-if="showDropdown"><div class="angucomplete-searching" ng-show="searching">Searching...</div>\n\
-<div class="angucomplete-searching" ng-show="!searching && (!results || results.length == 0)">No results found</div><div class="angucomplete-row" ng-repeat="result in results" ng-click="selectResult(result)" ng-mouseover="hoverRow()" ng-class="{\'angucomplete-selected-row\': $index == currentIndex}">\n\
-<div ng-if="imageField" class="angucomplete-image-holder"><img ng-if="result.image && result.image != \'\'" ng-src="{{result.image}}" class="angucomplete-image"/><div ng-if="!result.image && result.image != \'\'" class="angucomplete-image-default"></div></div>\n\
-<div class="angucomplete-title" ng-if="matchClass" ng-bind-html="result.title"></div>\n\
-<div class="angucomplete-title" ng-if="!matchClass">{{ result.title }}</div><div ng-if="result.description && result.description != \'\'" class="angucomplete-description">{{result.description}}</div></div>\n\
-<ion-scroll on-scroll="keepResult()"></ion-scroll></div></ion-content>\n\
-</div>',
+            templateUrl: 'lib/autocomplete/angucomplete.html',
             link: function(scope, elem, attrs) {
                 var inputField,
                         minlength = MIN_LENGTH,
                         searchTimer = null,
                         lastSearchTerm = null,
                         hideTimer;
-
                 scope.currentIndex = null;
                 scope.searching = false;
                 scope.searchStr = null;
@@ -107,24 +99,27 @@ angular.module('angucomplete-alt', []).directive('angucompleteAlt', ['$parse', '
                 if (!scope.overrideSuggestions) {
                     scope.overrideSuggestions = false;
                 }
-                scope.keepResult = function(){
-                    console.log("on scroll");
-                       scope.isMouseMove = true;
-                    scope.showDropdown = true;
-                    scope.hideResults();
-                };
+                elem.on('touchstart', function() {
+                    if (scope.results) {
+                        $timeout(function() {
+                            scope.isMouseMove = true;
+                            scope.showDropdown = true;
+                            document.getElementById(scope.id + "_value").focus();
+                        }, 0);
+                    }
+                });
                 scope.hideResults = function() {
-                    console.log(scope.isMouseMove);
                     if (scope.isMouseMove === false) {
                         hideTimer = $timeout(function() {
                             scope.showDropdown = false;
+                            scope.class = '';
                         }, scope.pause);
                     } else {
-                        hideTimer = $timeout(function() {
-                            document.getElementById("search_input_value").focus();
-                            console.log("false");
+                        $timeout(function() {
+                            scope.isMouseMove = true;
                             scope.isMouseMove = false;
-                        }, scope.pause);
+                            document.getElementById(scope.id + "_value").focus();
+                        }, 0);
                     }
 
 
@@ -138,7 +133,7 @@ angular.module('angucomplete-alt', []).directive('angucompleteAlt', ['$parse', '
 
                 scope.processResults = function(responseData, str) {
                     var titleFields, titleCode, i, t, description, image, text, re, strPart;
-
+                    scope.class = '';
                     if (responseData && responseData.length > 0) {
                         scope.results = [];
 
@@ -185,11 +180,11 @@ angular.module('angucomplete-alt', []).directive('angucompleteAlt', ['$parse', '
                                 image: image,
                                 originalObject: res
                             };
+                            scope.class = 'hasResult';
                         }
-
-
                     } else {
                         scope.results = [];
+                        scope.class = '';
                     }
                     //DAT LQ
                     scope.$apply();
@@ -349,4 +344,3 @@ angular.module('angucomplete-alt', []).directive('angucompleteAlt', ['$parse', '
             }
         };
     }]);
-
