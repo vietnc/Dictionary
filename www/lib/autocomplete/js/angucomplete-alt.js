@@ -100,23 +100,24 @@ angucompleteAlt.directive('angucompleteAlt', ['$parse', '$http', '$sce', '$timeo
                     scope.overrideSuggestions = false;
                 }
                 elem.on('touchstart', function() {
-                    if (scope.results) {
+                    if (scope.results && scope.results.length >0) {
                         $timeout(function() {
                             scope.isMouseMove = true;
                             scope.showDropdown = true;
                             document.getElementById(scope.id + "_value").focus();
                         }, 0);
+                    }else{
+                        
                     }
                 });
                 scope.hideResults = function() {
                     if (scope.isMouseMove === false) {
                         hideTimer = $timeout(function() {
-                           // scope.showDropdown = false;
-                           // scope.class = '';
+                            scope.showDropdown = false;
+                            scope.class = '';
                         }, scope.pause);
                     } else {
                         $timeout(function() {
-                            scope.isMouseMove = true;
                             scope.isMouseMove = false;
                             document.getElementById(scope.id + "_value").focus();
                         }, 0);
@@ -253,6 +254,7 @@ angucompleteAlt.directive('angucompleteAlt', ['$parse', '$http', '$sce', '$timeo
                 };
 
                 scope.keyPressed = function(event) {
+                    console.log(event.which );
                     if (!(event.which === KEY_UP || event.which === KEY_DW || event.which === KEY_EN)) {
                         if (!scope.searchStr || scope.searchStr === '') {
                             scope.showDropdown = false;
