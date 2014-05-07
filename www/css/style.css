@@ -11,8 +11,18 @@
 button.ion-navicon{
     color: #fff !important;
 }
+.search-result-box .header-search-result{
+    background: #f8f8f8;
+}
+.search-result-box .tab-item{
+    color: #56C5FF;
+    text-align: left;
+    max-width: none;
+    display: inline-table;
+    padding-left: 20px;
+}
 ion-side-menu > *, ion-side-menu .item-content{
-    background: #535353 !important;
+    background: #3f3f3f !important;
     color: #fff !important;
 }
 ion-side-menu header{
@@ -21,7 +31,7 @@ ion-side-menu header{
     border-bottom: 1px solid #7a7a7a !important;
 }
 ion-side-menu .item{
-    border-color: #464646;
+    border-color: #303030;
 }
 a.item:after, button.item:after, .item[href] .item-content:after, .item[ng-click] .item-content:after{
     content: '' !important;
@@ -36,17 +46,6 @@ ion-side-menu a:active{
 .search-box{
     margin-top: 20px;
 }
-#search_input_value{
-    border: 1px solid #ddd;
-    width: 100%;
-    margin: 0 auto;
-    border-radius: 0px;
-    padding: 10px 0 10px 10px;
-    height: 50px;
-}
-#search_input_value:focus{
-    border-color: #56C5FF;
-}
 .main-content{
     padding: 5px;
 }
@@ -58,8 +57,8 @@ ion-side-menu a:active{
 }
 .card{
     margin-top: 30px;
-/* padding: 0; */
-margin: 30px 0px 0px 0px;
+    /* padding: 0; */
+    margin: 30px 0px 0px 0px;
 }
 .bold-span{
     font-weight: bold;

@@ -100,8 +100,6 @@ angucompleteAlt.directive('angucompleteAlt', ['$parse', '$http', '$sce', '$timeo
                     scope.overrideSuggestions = false;
                 }
                 elem.on('touchstart', function() {
-                    console.log(scope.results);
-                    console.log(scope.searching);
                     if (scope.results && scope.results.length >0) {
                         $timeout(function() {
                             scope.isMouseMove = true;
@@ -120,7 +118,6 @@ angucompleteAlt.directive('angucompleteAlt', ['$parse', '$http', '$sce', '$timeo
                         }, scope.pause);
                     } else {
                         $timeout(function() {
-                            scope.isMouseMove = true;
                             scope.isMouseMove = false;
                             document.getElementById(scope.id + "_value").focus();
                         }, 0);
