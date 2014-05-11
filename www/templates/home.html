@@ -10,45 +10,30 @@
                     </label>
                 </div>-->
         <div class="main-content">
-            <div class="padded-row">
-                <angucomplete-alt id="search_input" placeholder="Tra từ" pause="0" selected-object="wordSelected" local-data="words" search-fields="title" title-field="title" minlength="1" input-class="form-control form-control-small" match-class="highlight" />
+            <div class="head-content">
+                <div class="padded-row">
+                    <angucomplete-alt id="search_input" placeholder="Tra từ" pause="0" selected-object="wordSelected" local-data="words" search-fields="title" title-field="title" minlength="1" input-class="form-control form-control-small" match-class="highlight" />
+                </div>
             </div>
-            <!--    <div class="card" ng-show="wordSelected">
-              <div class="item item-divider">
-                          <span class="bold-span">{{wordSelected.originalObject.title}}</span>
-            
-              </div>
-              <div class="item item-text-wrap">
-                      <div ng-bind-html="wordSelected.originalObject.content"></div>
-              </div>
-            </div>-->
-            <div class="list card search-result-box" ng-show="wordSelected">
 
-                <div class="item header-search-result">
-                    <span class="bold-span">{{wordSelected.originalObject.title}}</span>  
+                <div class="list card search-result-box" ng-show="wordSelected">
+
+                    <div class="item header-search-result">
+                        <span class="bold-span">{{wordSelected.originalObject.title}}</span>  
+                    </div>
+
+                    <div class="item item-body search-result-content">
+                        <div ng-bind-html="wordSelected.originalObject.content"></div>
+                    </div>
+
+                    <div class="item tabs tabs-secondary tabs-icon-left">
+                        <a class="tab-item" href="#">
+                            <i class="icon ion-ios7-plus-outline"></i>
+                            Save
+                        </a>
+                    </div>
+
                 </div>
-
-                <div class="item item-body search-result-content">
-                    <div ng-bind-html="wordSelected.originalObject.content"></div>
-                </div>
-
-                <div class="item tabs tabs-secondary tabs-icon-left">
-                    <a class="tab-item" href="#">
-                        <i class="icon ion-ios7-plus-outline"></i>
-                        Save
-                    </a>
-<!--                    <a class="tab-item" href="#">
-                        <i class="icon ion-chatbox"></i>
-                        Comment
-                    </a>
-                    <a class="tab-item" href="#">
-                        <i class="icon ion-share"></i>
-                        Share
-                    </a>-->
-                </div>
-
             </div>
-        </div>
-
     </ion-content>
 </ion-view>

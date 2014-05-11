@@ -11,14 +11,36 @@
 button.ion-navicon{
     color: #fff !important;
 }
+.search-result-box{
+        border-radius: 10px;
+        background: #f8f8f8;
+        border: none;
+}
 .search-result-box .header-search-result{
     background: #f8f8f8;
+}
+.search-result-box .item{
+    background: transparent;
+    border: none;
+}
+.search-result-box .item-body{
+    border-left: 8px solid #56C5FF;
+    border-left-color: #56C5FF;
+}
+.padded-row{
+    background: #f8f8f8;
+    padding: 20px;
+    border-radius: 10px !important;
+    margin-top: 10px;
+}
+.search-result-box .card .item:last-child{
+    border-bottom-left-radius: 10px !important;
+    border-bottom-right-radius: 10px !important;
 }
 .search-result-box .tab-item{
     color: #56C5FF;
     text-align: left;
     max-width: none;
-    display: inline-table;
     padding-left: 20px;
 }
 ion-side-menu > *, ion-side-menu .item-content{
@@ -80,4 +102,7 @@ ion-side-menu a:active{
     border-right: none;
     left: 0px;
     right: 0px;
+}
+.body-content{
+    
 }
