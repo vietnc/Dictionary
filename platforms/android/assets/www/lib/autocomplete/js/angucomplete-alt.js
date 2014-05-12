@@ -11,7 +11,7 @@
 'use strict';
 var angucompleteAlt = angular.module('angucomplete-alt', []);
 
-angucompleteAlt.directive('angucompleteAlt', ['$parse', '$http', '$sce', '$timeout', '$ionicScrollDelegate', function($parse, $http, $sce, $timeout, $ionicScrollDelegate) {
+angucompleteAlt.directive('angucompleteAlt', ['$parse', '$http', '$sce', '$timeout','$ionicScrollDelegate', function($parse, $http, $sce, $timeout,$ionicScrollDelegate) {
         var KEY_DW = 40,
                 KEY_UP = 38,
                 KEY_ES = 27,
@@ -100,15 +100,20 @@ angucompleteAlt.directive('angucompleteAlt', ['$parse', '$http', '$sce', '$timeo
                     scope.overrideSuggestions = false;
                 }
                 elem.on('touchstart', function() {
+                    //console.log("touch start");
                     if (scope.results && scope.results.length >0) {
                         $timeout(function() {
                             scope.isMouseMove = true;
                             scope.showDropdown = true;
-                            document.getElementById(scope.id + "_value").focus();
+                            console.log("c");
+                            document.getElementById(scope.id + '_value').blur();
                         }, 0);
                     }else{
                         
                     }
+                });
+                elem.on('touchleave',function(){
+                    console.log('touchleve');
                 });
                 scope.hideResults = function() {
                     if (scope.isMouseMove === false) {
@@ -119,7 +124,6 @@ angucompleteAlt.directive('angucompleteAlt', ['$parse', '$http', '$sce', '$timeo
                     } else {
                         $timeout(function() {
                             scope.isMouseMove = false;
-                            document.getElementById(scope.id + "_value").focus();
                         }, 0);
                     }
 

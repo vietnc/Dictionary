@@ -1,4 +1,4 @@
-html {
+/*html {
     height: 100%;
 }
 
@@ -64,7 +64,7 @@ p {
 }
 
 
-/* Top Menu */
+ Top Menu 
 .top-bar {
     padding: 10px;
     position: fixed;
@@ -161,7 +161,7 @@ h1 {
     }
 }
 
-/* Rows and columns */
+ Rows and columns 
 .row {
     margin-top: 10px;
     display: block;
@@ -210,7 +210,7 @@ h1 {
     }
 }
 
-/* Buttons */
+ Buttons 
 .btn {
     border-style: none;
     font-size: 14px;
@@ -367,15 +367,15 @@ h1 {
 }
 
 .card {
-/*    position: relative;
+    position: relative;
     margin-top: 20px;
     border-radius: 4px;
     padding: 20px;
-    background: #FFFFFF;*/
-    /*-moz-box-shadow:    0px 0px 4px 0px #D8D8D8;
+    background: #FFFFFF;
+    -moz-box-shadow:    0px 0px 4px 0px #D8D8D8;
     -webkit-box-shadow: 0px 0px 4px 0px #D8D8D8;
-    box-shadow:         0px 0px 4px 0px #D8D8D8;*/
-/*    border-style: none;
+    box-shadow:         0px 0px 4px 0px #D8D8D8;
+    border-style: none;
     border-style: solid;
     border-color: #D8D8D8;
     border-width: 1px;
@@ -383,7 +383,7 @@ h1 {
     overflow: auto;
     cursor: pointer;
     max-width: 220px;
-    margin-bottom: 10px;*/
+    margin-bottom: 10px;
 }
 
 .card.ng-show {
@@ -923,14 +923,14 @@ input[type="checkbox"] {
     font-size:22px;
     border-bottom-right-radius: 60px 5px;
     display:inline-block;
-    background: rgb(255,255,136); /* Old browsers */
-    background: -moz-linear-gradient(-45deg, rgba(255,255,136,1) 77%, rgba(255,255,214,1) 100%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, right bottom, color-stop(77%,rgba(255,255,136,1)), color-stop(100%,rgba(255,255,214,1))); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(-45deg, rgba(255,255,136,1) 77%,rgba(255,255,214,1) 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(-45deg, rgba(255,255,136,1) 77%,rgba(255,255,214,1) 100%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(-45deg, rgba(255,255,136,1) 77%,rgba(255,255,214,1) 100%); /* IE10+ */
-    background: linear-gradient(-45deg, rgba(255,255,136,1) 77%,rgba(255,255,214,1) 100%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffff88', endColorstr='#ffff88',GradientType=0 ); /* IE6-9 fallback on horizontal gradient */
+    background: rgb(255,255,136);  Old browsers 
+    background: -moz-linear-gradient(-45deg, rgba(255,255,136,1) 77%, rgba(255,255,214,1) 100%);  FF3.6+ 
+    background: -webkit-gradient(linear, left top, right bottom, color-stop(77%,rgba(255,255,136,1)), color-stop(100%,rgba(255,255,214,1)));  Chrome,Safari4+ 
+    background: -webkit-linear-gradient(-45deg, rgba(255,255,136,1) 77%,rgba(255,255,214,1) 100%);  Chrome10+,Safari5.1+ 
+    background: -o-linear-gradient(-45deg, rgba(255,255,136,1) 77%,rgba(255,255,214,1) 100%);  Opera 11.10+ 
+    background: -ms-linear-gradient(-45deg, rgba(255,255,136,1) 77%,rgba(255,255,214,1) 100%);  IE10+ 
+    background: linear-gradient(-45deg, rgba(255,255,136,1) 77%,rgba(255,255,214,1) 100%);  W3C 
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffff88', endColorstr='#ffff88',GradientType=0 );  IE6-9 fallback on horizontal gradient 
 }
 
 .postit:after {
@@ -1005,4 +1005,4 @@ td {
 
 .highlight {
 	color: #ff0000;
-}
+}*/

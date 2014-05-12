@@ -61,7 +61,7 @@ DBAdapter.prototype.query = function(sql) {
     return d.promise();
 }
 DBAdapter.prototype.search = function(keyword) {
-    var sql = "SELECT id, title, content FROM words WHERE title like '" + keyword + "%' ORDER by title ASC LIMIT 20";
+    var sql = "SELECT id, title, content FROM words WHERE title like '" + keyword + "%' ORDER by title ASC LIMIT 10";
     console.log("exe: " + sql);
     var result = this.query(sql);
     return result;
