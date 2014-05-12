@@ -99,12 +99,18 @@ angucompleteAlt.directive('angucompleteAlt', ['$parse', '$http', '$sce', '$timeo
                 if (!scope.overrideSuggestions) {
                     scope.overrideSuggestions = false;
                 }
+                /**
+                 * Click event to hide drop down
+                 */
                 document.addEventListener('click', function(event) {
-                    hideTimer = $timeout(function() {
+                    $timeout(function() {
                         scope.showDropdown = false;
                         scope.class = '';
-                    }, 0);
+                    }, scope.pause);
                 });
+                /**
+                 * Touch event dropdown 
+                 */
                 elem.on('touchstart', function() {
                     //console.log("touch start");
                     if (scope.results && scope.results.length > 0) {
@@ -112,27 +118,20 @@ angucompleteAlt.directive('angucompleteAlt', ['$parse', '$http', '$sce', '$timeo
                             scope.isMouseMove = true;
                             scope.showDropdown = true;
                             document.getElementById(scope.id + '_value').blur();
-                        }, 0);
+                        },scope.pause);
                     } else {
 
                     }
                 });
-                elem.on('touchleave', function() {
-                    console.log('touchleve');
-                });
+                /**
+                 * Hide result dropdown
+                 * @returns {undefined}
+                 */
                 scope.hideResults = function() {
-                    if (scope.isMouseMove === false) {
-                        hideTimer = $timeout(function() {
-                            scope.showDropdown = false;
-                            scope.class = '';
-                        }, scope.pause);
-                    } else {
-                        $timeout(function() {
-                            scope.isMouseMove = false;
-                        }, 0);
-                    }
-
-
+                    hideTimer = $timeout(function() {
+                        scope.showDropdown = false;
+                        scope.class = '';
+                    }, scope.pause);
                 };
 
                 scope.resetHideResults = function() {
