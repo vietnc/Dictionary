@@ -11,7 +11,7 @@
 'use strict';
 var angucompleteAlt = angular.module('angucomplete-alt', []);
 
-angucompleteAlt.directive('angucompleteAlt', ['$parse', '$http', '$sce', '$timeout','$ionicScrollDelegate', function($parse, $http, $sce, $timeout,$ionicScrollDelegate) {
+angucompleteAlt.directive('angucompleteAlt', ['$parse', '$http', '$sce', '$timeout', '$ionicScrollDelegate', function($parse, $http, $sce, $timeout, $ionicScrollDelegate) {
         var KEY_DW = 40,
                 KEY_UP = 38,
                 KEY_ES = 27,
@@ -99,19 +99,25 @@ angucompleteAlt.directive('angucompleteAlt', ['$parse', '$http', '$sce', '$timeo
                 if (!scope.overrideSuggestions) {
                     scope.overrideSuggestions = false;
                 }
+                document.addEventListener('click', function(event) {
+                    hideTimer = $timeout(function() {
+                        scope.showDropdown = false;
+                        scope.class = '';
+                    }, 0);
+                });
                 elem.on('touchstart', function() {
                     //console.log("touch start");
-                    if (scope.results && scope.results.length >0) {
+                    if (scope.results && scope.results.length > 0) {
                         $timeout(function() {
                             scope.isMouseMove = true;
                             scope.showDropdown = true;
                             document.getElementById(scope.id + '_value').blur();
                         }, 0);
-                    }else{
-                        
+                    } else {
+
                     }
                 });
-                elem.on('touchleave',function(){
+                elem.on('touchleave', function() {
                     console.log('touchleve');
                 });
                 scope.hideResults = function() {
@@ -257,7 +263,7 @@ angucompleteAlt.directive('angucompleteAlt', ['$parse', '$http', '$sce', '$timeo
                 };
 
                 scope.keyPressed = function(event) {
-                    console.log(event.which );
+                    console.log(event.which);
                     if (!(event.which === KEY_UP || event.which === KEY_DW || event.which === KEY_EN)) {
                         if (!scope.searchStr || scope.searchStr === '') {
                             scope.showDropdown = false;
