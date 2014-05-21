@@ -118,11 +118,15 @@ angucompleteAlt.directive('angucompleteAlt', ['$parse', '$http', '$sce', '$timeo
                             scope.isMouseMove = true;
                             scope.showDropdown = true;
                             document.getElementById(scope.id + '_value').blur();
-                        },scope.pause);
+                        }, scope.pause);
                     } else {
 
                     }
                 });
+                scope.loadSearchResult = function() {
+                    console.log("load more!");
+                    scope.$broadcast('scroll.infiniteScrollComplete');
+                };
                 /**
                  * Hide result dropdown
                  * @returns {undefined}

@@ -3,13 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/F:/xampp/htdocs/dictionary/www/index.html</file>
-            <file>file:/F:/xampp/htdocs/dictionary/www/templates/menu.html</file>
-            <file>file:/F:/xampp/htdocs/dictionary/www/css/style.css</file>
-            <file>file:/F:/xampp/htdocs/dictionary/www/lib/autocomplete/css/structure.css</file>
-            <file>file:/F:/xampp/htdocs/dictionary/www/lib/autocomplete/css/angucomplete-alt.css</file>
+            <file>file:/F:/xampp/htdocs/dictionary/www/js/controllers.js</file>
             <file>file:/F:/xampp/htdocs/dictionary/www/lib/autocomplete/angucomplete.html</file>
-            <file>file:/F:/xampp/htdocs/dictionary/www/templates/home.html</file>
             <file>file:/F:/xampp/htdocs/dictionary/www/lib/autocomplete/js/angucomplete-alt.js</file>
         </group>
     </open-files>

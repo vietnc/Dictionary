@@ -25,9 +25,12 @@
     z-index: 9999;
     position: absolute;
     background-color: #fff;
-    top: 1px!important;
+    top: 10px!important;
     border: none !important;
 
+}
+.highlight-blue{
+    color: #56C5FF;
 }
 .even{
     background: #f8f8f8;
@@ -77,4 +80,7 @@
 
 .search-form{
     margin: 0! important;
+}
+.angucomplete-holder .scroll-infinite{
+    top: 50px;
 }
