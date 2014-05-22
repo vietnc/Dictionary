@@ -69,12 +69,6 @@ F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\autocomplete\css\ang
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\autocomplete\js\angucomplete-alt.js \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\autocomplete\js\angular-touch.min.js \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\autocomplete\js\angular.min.js \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\autocomplete\js\app \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\autocomplete\js\app\app.js \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\autocomplete\js\app\controllers \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\autocomplete\js\app\directives \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\autocomplete\js\app\controllers\main-controller.js \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\autocomplete\js\app\directives\angucomplete-alt.js \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\beta4 \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\css \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\fonts \

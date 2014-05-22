@@ -12,349 +12,371 @@
 var angucompleteAlt = angular.module('angucomplete-alt', []);
 
 angucompleteAlt.directive('angucompleteAlt', ['$parse', '$http', '$sce', '$timeout', '$ionicScrollDelegate', function($parse, $http, $sce, $timeout, $ionicScrollDelegate) {
-        var KEY_DW = 40,
-                KEY_UP = 38,
-                KEY_ES = 27,
-                KEY_EN = 13,
-                KEY_BS = 8,
-                MIN_LENGTH = 3,
-                PAUSE = 500;
+    var KEY_DW = 40,
+    KEY_UP = 38,
+    KEY_ES = 27,
+    KEY_EN = 13,
+    KEY_BS = 8,
+    MIN_LENGTH = 3,
+    PAUSE = 500;
 
-        return {
-            restrict: 'EA',
-            scope: {
-                selectedObject: '=',
-                localData: '=',
-                remoteUrlRequestFormatter: '=',
-                id: '@',
-                placeholder: '@',
-                remoteUrl: '@',
-                remoteUrlDataField: '@',
-                titleField: '@',
-                descriptionField: '@',
-                imageField: '@',
-                inputClass: '@',
-                pause: '@',
-                searchFields: '@',
-                minlength: '@',
-                matchClass: '@',
-                clearSelected: '@',
-                overrideSuggestions: '@'
-            },
-            templateUrl: 'lib/autocomplete/angucomplete.html',
-            link: function(scope, elem, attrs) {
-                var inputField,
-                        minlength = MIN_LENGTH,
-                        searchTimer = null,
-                        lastSearchTerm = null,
-                        hideTimer;
-                scope.currentIndex = null;
-                scope.searching = false;
-                scope.searchStr = null;
-                scope.autofocus = null;
-                scope.isMouseMove = false;
-                var setInputString = function(str) {
-                    scope.selectedObject = {
-                        originalObject: str
-                    };
-
-                    if (scope.clearSelected) {
-                        scope.searchStr = null;
-                    }
-                    scope.showDropdown = false;
-                    scope.results = [];
+    return {
+        restrict: 'EA',
+        scope: {
+            selectedObject: '=',
+            localData: '=',
+            remoteUrlRequestFormatter: '=',
+            id: '@',
+            placeholder: '@',
+            remoteUrl: '@',
+            remoteUrlDataField: '@',
+            titleField: '@',
+            descriptionField: '@',
+            imageField: '@',
+            inputClass: '@',
+            pause: '@',
+            searchFields: '@',
+            minlength: '@',
+            matchClass: '@',
+            clearSelected: '@',
+            overrideSuggestions: '@'
+        },
+        templateUrl: 'lib/autocomplete/angucomplete.html',
+        link: function(scope, elem, attrs) {
+            var inputField,
+            minlength = MIN_LENGTH,
+            searchTimer = null,
+            lastSearchTerm = null,
+            hideTimer;
+            // For lazy loading searching
+            scope.numberSearchItem = 20;
+            scope.currentPage = 1;
+            scope.hasMoreResult = true;
+            scope.isLoadMore = false;
+            //---------------------------
+            scope.currentIndex = null;
+            scope.searching = false;
+            scope.searchStr = null;
+            scope.autofocus = null;
+            scope.isMouseMove = false;
+            var setInputString = function(str) {
+                scope.selectedObject = {
+                    originalObject: str
                 };
 
-                var isNewSearchNeeded = function(newTerm, oldTerm) {
-                    return newTerm.length >= minlength && newTerm !== oldTerm;
-                };
-
-                var extractValue = function(obj, key) {
-                    var keys, result;
-                    if (key) {
-                        keys = key.split('.');
-                        result = obj;
-                        keys.forEach(function(k) {
-                            result = result[k];
-                        });
-                    }
-                    else {
-                        result = obj;
-                    }
-                    return result;
-                };
-
-                if (scope.minlength && scope.minlength !== '') {
-                    minlength = scope.minlength;
+                if (scope.clearSelected) {
+                    scope.searchStr = null;
                 }
+                scope.showDropdown = false;
+                scope.results = [];
+            };
 
-                if (!scope.pause) {
-                    scope.pause = PAUSE;
-                }
+            var isNewSearchNeeded = function(newTerm, oldTerm) {
+                return newTerm.length >= minlength && newTerm !== oldTerm;
+            };
 
-                if (!scope.clearSelected) {
-                    scope.clearSelected = false;
+            var extractValue = function(obj, key) {
+                var keys, result;
+                if (key) {
+                    keys = key.split('.');
+                    result = obj;
+                    keys.forEach(function(k) {
+                        result = result[k];
+                    });
                 }
+                else {
+                    result = obj;
+                }
+                return result;
+            };
 
-                if (!scope.overrideSuggestions) {
-                    scope.overrideSuggestions = false;
-                }
-                /**
+            if (scope.minlength && scope.minlength !== '') {
+                minlength = scope.minlength;
+            }
+
+            if (!scope.pause) {
+                scope.pause = PAUSE;
+            }
+
+            if (!scope.clearSelected) {
+                scope.clearSelected = false;
+            }
+
+            if (!scope.overrideSuggestions) {
+                scope.overrideSuggestions = false;
+            }
+            /**
                  * Click event to hide drop down
                  */
-                document.addEventListener('click', function(event) {
-                    $timeout(function() {
-                        scope.showDropdown = false;
-                        scope.class = '';
-                    }, scope.pause);
-                });
-                /**
+            document.addEventListener('click', function(event) {
+                $timeout(function() {
+                    scope.showDropdown = false;
+                    scope.class = '';
+                }, scope.pause);
+            });
+            /**
                  * Touch event dropdown 
                  */
-                elem.on('touchstart', function() {
-                    //console.log("touch start");
-                    if (scope.results && scope.results.length > 0) {
-                        $timeout(function() {
-                            scope.isMouseMove = true;
-                            scope.showDropdown = true;
-                            document.getElementById(scope.id + '_value').blur();
-                        }, scope.pause);
-                    } else {
+            elem.on('touchstart', function() {
+                if (scope.results && scope.results.length > 0) {
+                    $timeout(function() {
+                        scope.isMouseMove = true;
+                        scope.showDropdown = true;
+                        document.getElementById(scope.id + '_value').blur();
+                    }, scope.pause);
+                } else {
 
-                    }
-                });
-                scope.loadSearchResult = function() {
-                    console.log("load more!");
-                    scope.$broadcast('scroll.infiniteScrollComplete');
-                };
-                /**
+                }
+            });
+            scope.loadSearchResult = function() {
+                $timeout(function() {
+                    scope.isLoadMore = true;
+                    scope.currentPage++;
+                    scope.searchTimerComplete(scope.searchStr);
+                }, 500);
+                scope.$broadcast('scroll.infiniteScrollComplete');
+               
+            };
+            /**
                  * Hide result dropdown
                  * @returns {undefined}
                  */
-                scope.hideResults = function() {
-                    hideTimer = $timeout(function() {
-                        scope.showDropdown = false;
-                        scope.class = '';
-                    }, scope.pause);
-                };
-
-                scope.resetHideResults = function() {
-                    if (hideTimer) {
-                        $timeout.cancel(hideTimer);
-                    }
-                };
-
-                scope.processResults = function(responseData, str) {
-                    var titleFields, titleCode, i, t, description, image, text, re, strPart;
+            scope.hideResults = function() {
+                hideTimer = $timeout(function() {
+                    scope.showDropdown = false;
                     scope.class = '';
-                    if (responseData && responseData.length > 0) {
+                }, scope.pause);
+            };
+
+            scope.resetHideResults = function() {
+                if (hideTimer) {
+                    $timeout.cancel(hideTimer);
+                }
+            };
+
+            scope.processResults = function(responseData, str) {
+                var titleFields, titleCode, i, t, description, image, text, re, strPart;
+                scope.class = '';
+                if (responseData && responseData.length > 0) {
+                    if(scope.isLoadMore === false){
                         scope.results = [];
-
-                        titleFields = [];
-                        if (scope.titleField && scope.titleField !== '') {
-                            titleFields = scope.titleField.split(',');
-                        }
-
-                        for (i = 0; i < responseData.length; i++) {
-                            // Get title variables
-                            titleCode = [];
-
-                            for (t = 0; t < titleFields.length; t++) {
-                                titleCode.push(responseData[i][titleFields[t]]);
-                            }
-
-                            description = '';
-                            if (scope.descriptionField) {
-                                description = extractValue(responseData[i], scope.descriptionField);
-                            }
-
-                            image = '';
-                            if (scope.imageField) {
-                                image = extractValue(responseData[i], scope.imageField);
-                            }
-
-                            text = titleCode.join(' ');
-                            if (scope.matchClass) {
-                                re = new RegExp(str, 'i');
-                                strPart = text.match(re)[0];
-                                text = $sce.trustAsHtml(text.replace(re, '<span class="' + scope.matchClass + '">' + strPart + '</span>'));
-                            }
-                            var res = {};
-                            for (var key in responseData[i]) {
-                                if (key != 'content') {
-                                    res[key] = responseData[i][key];
-                                } else {
-                                    res[key] = $sce.trustAsHtml(responseData[i][key]);
-                                }
-                            }
-                            scope.results[scope.results.length] = {
-                                title: text,
-                                description: description,
-                                image: image,
-                                originalObject: res
-                            };
-                            scope.class = 'hasResult';
-                        }
-                    } else {
-                        scope.results = [];
-                        scope.class = '';
                     }
-                    //DAT LQ
-                    scope.$apply();
-                };
+                    titleFields = [];
+                    if (scope.titleField && scope.titleField !== '') {
+                        titleFields = scope.titleField.split(',');
+                    }
 
-                scope.searchTimerComplete = function(str) {
-                    // Begin the search
-                    var searchFields, matches, i, match, s, params;
-                    scope.localData = [];
-                    if (str.length >= minlength) {
-                        var db = new DBAdapter();
-                        var data = db.search(str).done(function(result) {
-                            scope.searching = false;
-                            var res = [];
-                            for (var i = 0; i < result.rows.length; i++) {
-                                var row = result.rows.item(i);
-                                scope.localData.push(row);
+                    for (i = 0; i < responseData.length; i++) {
+                        // Get title variables
+                        titleCode = [];
+
+                        for (t = 0; t < titleFields.length; t++) {
+                            titleCode.push(responseData[i][titleFields[t]]);
+                        }
+
+                        description = '';
+                        if (scope.descriptionField) {
+                            description = extractValue(responseData[i], scope.descriptionField);
+                        }
+
+                        image = '';
+                        if (scope.imageField) {
+                            image = extractValue(responseData[i], scope.imageField);
+                        }
+
+                        text = titleCode.join(' ');
+                        if (scope.matchClass) {
+                            re = new RegExp(str, 'i');
+                            strPart = text.match(re)[0];
+                            text = $sce.trustAsHtml(text.replace(re, '<span class="' + scope.matchClass + '">' + strPart + '</span>'));
+                        }
+                        var res = {};
+                        for (var key in responseData[i]) {
+                            if (key !== 'content') {
+                                res[key] = responseData[i][key];
+                            } else {
+                                res[key] = $sce.trustAsHtml(responseData[i][key]);
                             }
-                            searchFields = scope.searchFields.split(',');
+                        }
+                        scope.results[scope.results.length] = {
+                            title: text,
+                            description: description,
+                            image: image,
+                            originalObject: res
+                        };
+                        scope.class = 'hasResult';
+                    }
+                } else {
+                    scope.results = [];
+                    scope.class = '';
+                }
+                //DAT LQ
+                scope.$apply();
+            };
 
-                            matches = [];
-
-                            for (i = 0; i < scope.localData.length; i++) {
-                                match = false;
-
-                                for (s = 0; s < searchFields.length; s++) {
-                                    match = match || (scope.localData[i][searchFields[s]].toLowerCase().indexOf(str.toLowerCase()) >= 0);
-                                }
-
-                                if (match) {
-                                    matches[matches.length] = scope.localData[i];
-                                }
-                            }
-                            scope.searching = false;
-                            scope.processResults(matches, str);
-                        });
-                        if (scope.localData) {
-
-                        } else if (scope.remoteUrlRequestFormatter) {
-                            params = scope.remoteUrlRequestFormatter(str);
-                            $http.get(scope.remoteUrl, {
-                                params: params
-                            }).
-                                    success(function(responseData, status, headers, config) {
-                                        scope.searching = false;
-                                        scope.processResults(extractValue(responseData, scope.remoteUrlDataField), str);
-                                    }).
-                                    error(function(data, status, headers, config) {
-                                    });
-
+            scope.searchTimerComplete = function(str) {
+                // Begin the search
+                var searchFields, matches, i, match, s, params;
+                if(scope.isLoadMore === false){
+                    scope.currentPage = 1;
+                }
+                scope.localData = [];
+                if (str.length >= minlength) {
+                    // search 
+                    var db = new DBAdapter();
+                    console.log("get page " + scope.currentPage);
+                    var data = db.search(str, scope.currentPage, scope.numberSearchItem).done(function(result) {
+                        scope.searching = false;
+                        console.log("number words = " + result.rows.length);
+                        if (result.rows.length < scope.numberSearchItem) {
+                            scope.hasMoreResult = false;
                         } else {
-                            $http.get(scope.remoteUrl + str, {}).
-                                    success(function(responseData, status, headers, config) {
-                                        scope.searching = false;
-                                        scope.processResults(extractValue(responseData, scope.remoteUrlDataField), str);
-                                    }).
-                                    error(function(data, status, headers, config) {
-                                    });
+                            scope.hasMoreResult = true;
                         }
-                    }
+                        var res = [];
+                        for (var i = 0; i < result.rows.length; i++) {
+                            var row = result.rows.item(i);
+                            scope.localData.push(row);
+                        }
+                        searchFields = scope.searchFields.split(',');
 
-                };
+                        matches = [];
 
-                scope.hoverRow = function(index) {
-                    scope.currentIndex = index;
-                };
+                        for (i = 0; i < scope.localData.length; i++) {
+                            match = false;
 
-                scope.keyPressed = function(event) {
-                    console.log(event.which);
-                    if (!(event.which === KEY_UP || event.which === KEY_DW || event.which === KEY_EN)) {
-                        if (!scope.searchStr || scope.searchStr === '') {
-                            scope.showDropdown = false;
-                            lastSearchTerm = null;
-                        } else if (isNewSearchNeeded(scope.searchStr, lastSearchTerm)) {
-                            lastSearchTerm = scope.searchStr;
-                            scope.showDropdown = true;
-                            scope.currentIndex = -1;
-                            scope.results = [];
-
-                            if (searchTimer) {
-                                $timeout.cancel(searchTimer);
+                            for (s = 0; s < searchFields.length; s++) {
+                                match = match || (scope.localData[i][searchFields[s]].toLowerCase().indexOf(str.toLowerCase()) >= 0);
                             }
 
-                            scope.searching = true;
-
-                            searchTimer = $timeout(function() {
-                                scope.searchTimerComplete(scope.searchStr);
-                            }, scope.pause);
+                            if (match) {
+                                matches[matches.length] = scope.localData[i];
+                            }
                         }
+                        scope.searching = false;
+                        scope.processResults(matches, str);
+                    });
+                    if (scope.localData) {
+
+                    } else if (scope.remoteUrlRequestFormatter) {
+                        params = scope.remoteUrlRequestFormatter(str);
+                        $http.get(scope.remoteUrl, {
+                            params: params
+                        }).
+                        success(function(responseData, status, headers, config) {
+                            scope.searching = false;
+                            scope.processResults(extractValue(responseData, scope.remoteUrlDataField), str);
+                        }).
+                        error(function(data, status, headers, config) {
+                            });
+
                     } else {
+                        $http.get(scope.remoteUrl + str, {}).
+                        success(function(responseData, status, headers, config) {
+                            scope.searching = false;
+                            scope.processResults(extractValue(responseData, scope.remoteUrlDataField), str);
+                        }).
+                        error(function(data, status, headers, config) {
+                            });
+                    }
+                }
+
+            };
+
+            scope.hoverRow = function(index) {
+                scope.currentIndex = index;
+            };
+
+            scope.keyPressed = function(event) {
+                if (!(event.which === KEY_UP || event.which === KEY_DW || event.which === KEY_EN)) {
+                    if (!scope.searchStr || scope.searchStr === '') {
+                        scope.showDropdown = false;
+                        lastSearchTerm = null;
+                    } else if (isNewSearchNeeded(scope.searchStr, lastSearchTerm)) {
+                        lastSearchTerm = scope.searchStr;
+                        scope.showDropdown = true;
+                        scope.currentIndex = -1;
+                        scope.results = [];
+                        scope.isLoadMore = false;
+
+                        if (searchTimer) {
+                            $timeout.cancel(searchTimer);
+                        }
+
+                        scope.searching = true;
+
+                        searchTimer = $timeout(function() {
+                            scope.searchTimerComplete(scope.searchStr);
+                        }, scope.pause);
+                    }
+                } else {
+                    event.preventDefault();
+                }
+            };
+
+            scope.selectResult = function(result) {
+                if (scope.matchClass) {
+                    result.title = result.title.toString().replace(/(<([^>]+)>)/ig, '');
+                }
+
+                if (scope.clearSelected) {
+                    scope.searchStr = null;
+                }
+                else {
+                    scope.searchStr = lastSearchTerm = result.title;
+                }
+                scope.selectedObject = result;
+                scope.showDropdown = false;
+                scope.results = [];
+
+            };
+
+            inputField = elem.find('input');
+
+            inputField.on('keyup', scope.keyPressed);
+
+            elem.on('keyup', function(event) {
+                if (event.which === KEY_DW && scope.results) {
+                    if ((scope.currentIndex + 1) < scope.results.length) {
+                        scope.$apply(function() {
+                            scope.currentIndex++;
+                        });
                         event.preventDefault();
                     }
-                };
 
-                scope.selectResult = function(result) {
-                    if (scope.matchClass) {
-                        result.title = result.title.toString().replace(/(<([^>]+)>)/ig, '');
+                } else if (event.which === KEY_UP) {
+                    if (scope.currentIndex >= 1) {
+                        scope.currentIndex--;
+                        scope.$apply();
+                        event.preventDefault();
                     }
 
-                    if (scope.clearSelected) {
-                        scope.searchStr = null;
+                } else if (event.which === KEY_EN && scope.results) {
+                    if (scope.currentIndex >= 0 && scope.currentIndex < scope.results.length) {
+                        scope.selectResult(scope.results[scope.currentIndex]);
+                        scope.$apply();
+                        event.preventDefault();
+                    } else {
+                        event.preventDefault();
+                        if (scope.overrideSuggestions) {
+                            setInputString(scope.searchStr);
+                            scope.$apply();
+                        }
+                        else {
+                            scope.results = [];
+                            scope.$apply();
+                        }
                     }
-                    else {
-                        scope.searchStr = lastSearchTerm = result.title;
-                    }
-                    scope.selectedObject = result;
-                    scope.showDropdown = false;
+
+                } else if (event.which === KEY_ES) {
                     scope.results = [];
-
-                };
-
-                inputField = elem.find('input');
-
-                inputField.on('keyup', scope.keyPressed);
-
-                elem.on('keyup', function(event) {
-                    if (event.which === KEY_DW && scope.results) {
-                        if ((scope.currentIndex + 1) < scope.results.length) {
-                            scope.$apply(function() {
-                                scope.currentIndex++;
-                            });
-                            event.preventDefault();
-                        }
-
-                    } else if (event.which === KEY_UP) {
-                        if (scope.currentIndex >= 1) {
-                            scope.currentIndex--;
-                            scope.$apply();
-                            event.preventDefault();
-                        }
-
-                    } else if (event.which === KEY_EN && scope.results) {
-                        if (scope.currentIndex >= 0 && scope.currentIndex < scope.results.length) {
-                            scope.selectResult(scope.results[scope.currentIndex]);
-                            scope.$apply();
-                            event.preventDefault();
-                        } else {
-                            event.preventDefault();
-                            if (scope.overrideSuggestions) {
-                                setInputString(scope.searchStr);
-                                scope.$apply();
-                            }
-                            else {
-                                scope.results = [];
-                                scope.$apply();
-                            }
-                        }
-
-                    } else if (event.which === KEY_ES) {
-                        scope.results = [];
-                        scope.showDropdown = false;
-                        scope.$apply();
-                    } else if (event.which === KEY_BS) {
-                        //scope.selectedObject = null;
-                        scope.$apply();
-                    }
-                });
-            }
-        };
-    }]);
+                    scope.showDropdown = false;
+                    scope.$apply();
+                } else if (event.which === KEY_BS) {
+                    //scope.selectedObject = null;
+                    scope.$apply();
+                }
+            });
+        }
+    };
+}]);

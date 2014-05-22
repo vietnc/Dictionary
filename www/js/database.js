@@ -6,11 +6,11 @@ var DBAdapter = function(dbType) {
     this.result = null;
     // constructor
     var construct = function(that, dbType) {
-        if (dbType == 'undefined' || dbType == '' || dbType == null) {
+        if (typeof  dbType === 'undefined' || dbType === '' || dbType === null) {
             dbType = _DICT_AV_;
         }
         if (navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry)/)
-                && typeof cordova != 'undefined') {
+                && typeof cordova !== 'undefined') {
             // on mobile device and cordova is loaded
             try {
                 var self = that;
@@ -18,9 +18,8 @@ var DBAdapter = function(dbType) {
                     name: 'av_dict'
                 });
                 that.checkDBExist().done(function(result) {
-                    if (result == false) {
+                    if (result === false) {
                         //self.initDBWeb();
-                        alert("db not found");
                     }
                 });
             } catch (error) {
@@ -30,7 +29,6 @@ var DBAdapter = function(dbType) {
         } else {
             // on web browser
             that.db = window.openDatabase(db_config[dbType]['web'], '1.0', db_config[dbType][1], _MAX_SIZE_);
-            console.log("application is runing on web browser");
             that.initDBWeb();
         }
     }(this);
@@ -60,8 +58,15 @@ DBAdapter.prototype.query = function(sql) {
 
     return d.promise();
 }
-DBAdapter.prototype.search = function(keyword) {
-    var sql = "SELECT id, title, content FROM words WHERE title like '" + keyword + "%' ORDER by title ASC LIMIT 10";
+DBAdapter.prototype.search = function(keyword, currentPage, numItemsPerPage) {
+    if(typeof currentPage === 'undefined' || parseInt(currentPage) < 1){
+        currentPage = 1;
+    }
+    if(typeof numItemsPerPage === 'undefined' || parseInt(numItemsPerPage) <= 0){
+        numItemsPerPage = 20;
+    }
+    var offset = (currentPage - 1) * numItemsPerPage;
+    var sql = "SELECT id, title, content FROM words WHERE title like '" + keyword + "%' ORDER by title ASC LIMIT " + offset +  ", " + numItemsPerPage;
     console.log("exe: " + sql);
     var result = this.query(sql);
     return result;
@@ -84,7 +89,7 @@ DBAdapter.prototype.initDBWeb = function() {
     // check db is exist
     var self = this;
     this.checkDBExist().done(function(result) {
-        if (result == false || result.rows.length == 0) {
+        if (result === false || result.rows.length === 0) {
             // table is not exists
             // init database
             self.readSqlFile();

@@ -22,7 +22,8 @@
             <ion-infinite-scroll
                 icon="ion-loading-c"
                 on-infinite="loadSearchResult()"
-                distance="20%"
+                distance="40%"
+                ng-if="hasMoreResult"
                 >
             </ion-infinite-scroll>
         </ion-scroll>
