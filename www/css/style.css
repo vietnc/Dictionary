@@ -1,86 +1,59 @@
 /* Empty. Add your own CSS if you like */
+.bar.bar-stable{
+    border-color: #ddd;
+    border-bottom: 1px solid #ddd;
+}
 .nav-bar{
-    background-color: #56C5FF !important;
-    border: none;
-    border-bottom: 3px solid #2DA3E0 !important;
-    color: #fff;
+    width: 100%;
+    background: transparent !important;
 }
 .title{
-    color: #fff!important;
+    color: #3b5998!important;
 }
 button.ion-navicon{
-    color: #fff !important;
+    color: #3B5998  !important;
 }
-.search-result-box{
-        border-radius: 10px;
-        background: #f8f8f8;
-        border: none;
-}
-.search-result-box .header-search-result{
-    background: #f8f8f8;
-}
-.search-result-box .item{
-    background: transparent;
-    border: none;
-}
-.search-result-box .item-body{
-    border-left: 8px solid #56C5FF;
-    border-left-color: #56C5FF;
-}
-.padded-row{
-    background: #f8f8f8;
-    padding: 20px;
-    border-radius: 10px !important;
-    margin-top: 10px;
-}
-.search-result-box .card .item:last-child{
-    border-bottom-left-radius: 10px !important;
-    border-bottom-right-radius: 10px !important;
-}
+
 .search-result-box .tab-item{
     color: #56C5FF;
     text-align: left;
     max-width: none;
     padding-left: 20px;
+    margin-left: 5px;
 }
 ion-side-menu > *, ion-side-menu .item-content{
-    background: #3f3f3f !important;
-    color: #fff !important;
+    background: #f2f2f2 !important;
+    color: #3B5998 !important;
 }
 ion-side-menu header{
-    background: #333 !important;
+    background: #f2f2f2 !important;
     border: none !important;
-    border-bottom: 1px solid #7a7a7a !important;
+    border-bottom: 1px solid #ffffff !important;
 }
 ion-side-menu .item{
-    border-color: #303030;
+    border-color: #ddd;
 }
 a.item:after, button.item:after, .item[href] .item-content:after, .item[ng-click] .item-content:after{
     content: '' !important;
 }
 ion-side-menu *{
-    color: #ececec !important;
+    color: #3B5998 !important;
 }
 ion-side-menu a:active{
-    background: #333 !important;
+    background: #ddd !important;
     border: none !important;
 }
 .search-box{
     margin-top: 20px;
 }
 .main-content{
-    padding: 5px;
+    /*padding: 5px;*/
 }
 .menu-bar{
-    border-bottom: 1px solid #222 !important;
+    border-bottom: 1px solid #ddd !important;
 }
 .menu-bar h1{
-    color: #ddd !important;
-}
-.card{
-    margin-top: 30px;
-    /* padding: 0; */
-    margin: 30px 0px 0px 0px;
+    color:#3B5998 !important;
 }
 .bold-span{
     font-weight: bold;
@@ -104,5 +77,8 @@ ion-side-menu a:active{
     right: 0px;
 }
 .body-content{
-    
+
+}
+.item-complex .item-content, .item-radio .item-content{
+    padding: 10px 45px 10px 15px;
 }

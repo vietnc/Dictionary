@@ -39,8 +39,11 @@ var DBAdapter = function(dbType) {
  * Execute sql
  */
 DBAdapter.prototype.query = function(sql) {
+                console.log("done query");
+
     var d = $.Deferred();
     try {
+
         this.db.transaction(function(tx) {
             tx.executeSql(sql, [], function(tx, results) {
                 d.resolve(results);
@@ -57,12 +60,10 @@ DBAdapter.prototype.query = function(sql) {
         alert(error);
         d.resolve(false);
     }
-
     return d.promise();
 }
 DBAdapter.prototype.search = function(keyword) {
     var sql = "SELECT id, title, content FROM words WHERE title like '" + keyword + "%' ORDER by title ASC LIMIT 20";
-    console.log("exe: " + sql);
     var result = this.query(sql);
     return result;
 };

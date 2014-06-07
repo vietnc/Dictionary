@@ -37,6 +37,7 @@ F:\xampp\htdocs\dictionary\platforms\android\assets\www\spec \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\spec.html \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\SQLitePlugin.js \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\templates \
+F:\xampp\htdocs\dictionary\platforms\android\assets\www\css\home.css \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\css\index.css \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\css\style.css \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\fonts\ionicons.eot \

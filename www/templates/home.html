@@ -1,23 +1,30 @@
-<ion-view title="Dictionary" ng-controller="DictHomeCtrl">
+<link href="css/home.css" rel="stylesheet">
+
+<ion-view has-header="false" title="" ng-controller="DictHomeCtrl">
+    <div class="bar bar-header item-input-inset search-bar">
+        <label class="item-input-wrapper label-search-dict">
+            <i class="icon ion-ios7-search placeholder-icon"></i>
+            <angucomplete-alt results="resultsCollection" id="search_input" placeholder="Tra từ" pause="0" selected-object="wordSelected" local-data="words" search-fields="title" title-field="title" minlength="1" input-class="form-control form-control-small" match-class="highlight-blue" />
+            <!--    <input angucomplete-alt results="results" id="search_input" ng-model="searchStr" placeholder="Tra từ" pause="0" selected-object="wordSelected" local-data="words" search-fields="title" title-field="title" minlength="1" type="text" class="search-dict">-->
+        </label>
+    </div>
     <ion-nav-buttons side="left">
         <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
     </ion-nav-buttons>
+
     <ion-content class="has-header">
         <div class="main-content">
-            <div class="head-content">
-                <div class="padded-row">
-                    <angucomplete-alt id="search_input" placeholder="Tra từ" pause="0" selected-object="wordSelected" local-data="words" search-fields="title" title-field="title" minlength="1" input-class="form-control form-control-small" match-class="highlight-blue" />
-                </div>
+            <div class="list" ng-show="!wordSelected">
+                <a class="item" ng-click="selectResult(res)" href="#" ng-repeat="res in resultsCollection"> 
+                    {{res.title}}
+                </a>
             </div>
-
-                <div class="list card search-result-box" ng-show="wordSelected">
-
-                    <div class="item header-search-result">
-                        <span class="bold-span">{{wordSelected.originalObject.title}}</span>  
-                    </div>
-
-                    <div class="item item-body search-result-content">
-                        <div ng-bind-html="wordSelected.originalObject.content"></div>
+            <div class="list card search-result-box" ng-show="wordSelected">
+                <div class="item">
+                    <span class="bold-span">{{selectedObject.title}}</span>  
+                </div>
+                 <div class="item item-body">
+                        <div ng-bind-html="selectedObject.content"></div>
                     </div>
 
                     <div class="item tabs tabs-secondary tabs-icon-left">
@@ -27,7 +34,7 @@
                         </a>
                     </div>
 
-                </div>
             </div>
+        </div>
     </ion-content>
 </ion-view>

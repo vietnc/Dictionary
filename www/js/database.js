@@ -55,7 +55,7 @@ DBAdapter.prototype.query = function(sql) {
         alert(error);
         d.resolve(false);
     }
-
+    console.log("que");
     return d.promise();
 }
 DBAdapter.prototype.search = function(keyword, currentPage, numItemsPerPage) {
