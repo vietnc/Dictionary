@@ -10,3 +10,4 @@ var db_config = {
     av : {'android':_ANDROID_AV_NAME_, 'web':_DB_AV_}
 };
 
+var MAX_NUMBER_WORDS_SEARCH = 20;

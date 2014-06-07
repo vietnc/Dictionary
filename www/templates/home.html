@@ -4,8 +4,8 @@
     <div class="bar bar-header item-input-inset search-bar">
         <label class="item-input-wrapper label-search-dict">
             <i class="icon ion-ios7-search placeholder-icon"></i>
-            <angucomplete-alt results="resultsCollection" id="search_input" placeholder="Tra từ" pause="0" selected-object="wordSelected" local-data="words" search-fields="title" title-field="title" minlength="1" input-class="form-control form-control-small" match-class="highlight-blue" />
-            <!--    <input angucomplete-alt results="results" id="search_input" ng-model="searchStr" placeholder="Tra từ" pause="0" selected-object="wordSelected" local-data="words" search-fields="title" title-field="title" minlength="1" type="text" class="search-dict">-->
+            <!--<angucomplete-alt results="resultsCollection" id="search_input" class="search-dict" placeholder="Tra từ" pause="0" selected-object="wordSelected" local-data="words" search-fields="title" title-field="title" minlength="1" input-class="form-control form-control-small" match-class="highlight-blue" />-->
+             <input placeholder="Tra từ" id="search_input" type="text" ng-model="searchStr" ng-change="searchDict(searchStr,1)" class="search-dict">
         </label>
     </div>
     <ion-nav-buttons side="left">

@@ -44,8 +44,8 @@ angucompleteAlt.directive('angucompleteAlt', ['$parse', '$http', '$sce', '$timeo
         },
         templateUrl: 'lib/autocomplete/angucomplete.html',
         link: function(scope, elem, attrs) {
-            var inputField,
-            minlength = MIN_LENGTH,
+             
+            var minlength = MIN_LENGTH,
             searchTimer = null,
             lastSearchTerm = null,
             hideTimer;
@@ -60,18 +60,6 @@ angucompleteAlt.directive('angucompleteAlt', ['$parse', '$http', '$sce', '$timeo
             scope.searchStr = null;
             scope.autofocus = null;
             scope.isMouseMove = false;
-            var setInputString = function(str) {
-                scope.selectedObject = {
-                    originalObject: str
-                };
-
-                if (scope.clearSelected) {
-                    scope.searchStr = null;
-                }
-                scope.showDropdown = false;
-                scope.results = [];
-            };
-
             var isNewSearchNeeded = function(newTerm, oldTerm) {
                 return newTerm.length >= minlength && newTerm !== oldTerm;
             };
@@ -106,31 +94,16 @@ angucompleteAlt.directive('angucompleteAlt', ['$parse', '$http', '$sce', '$timeo
             if (!scope.overrideSuggestions) {
                 scope.overrideSuggestions = false;
             }
-          
-            /**
-                 * Touch event dropdown 
-                 */
-            elem.on('touchstart', function() {
-                if (scope.results && scope.results.length > 0) {
-                    $timeout(function() {
-                        scope.isMouseMove = true;
-                        scope.showDropdown = true;
-                        document.getElementById(scope.id + '_value').blur();
-                    }, scope.pause);
-                } else {
-
-                }
-            });
             scope.loadSearchResult = function() {
                 $timeout(function() {
                     scope.isLoadMore = true;
                     scope.currentPage++;
-                    consol.log("load");
                     scope.searchTimerComplete(scope.searchStr);
                 }, 500);
                 scope.$broadcast('scroll.infiniteScrollComplete');
                
             };
+           
             /**
                  * Hide result dropdown
                  * @returns {undefined}
@@ -148,7 +121,6 @@ angucompleteAlt.directive('angucompleteAlt', ['$parse', '$http', '$sce', '$timeo
             };
 
             scope.processResults = function(responseData, str) {
-                var titleFields, titleCode, i, t, description, image, text, re, strPart;
                scope.results = responseData;
                 //DAT LQ
                 scope.$apply();
@@ -231,8 +203,7 @@ angucompleteAlt.directive('angucompleteAlt', ['$parse', '$http', '$sce', '$timeo
             scope.keyPressed = function(event) {
                 if (!(event.which === KEY_UP || event.which === KEY_DW || event.which === KEY_EN)) {
                     if (!scope.searchStr || scope.searchStr === '') {
-                        scope.showDropdown = false;
-                        lastSearchTerm = null;
+                      
                     } else if (isNewSearchNeeded(scope.searchStr, lastSearchTerm)) {
                         lastSearchTerm = scope.searchStr;
                         scope.showDropdown = true;
@@ -247,7 +218,6 @@ angucompleteAlt.directive('angucompleteAlt', ['$parse', '$http', '$sce', '$timeo
                         scope.searching = true;
 
                         searchTimer = $timeout(function() {
-                            console.log("search");
                             scope.searchTimerComplete(scope.searchStr);
                         }, scope.pause);
                     }
