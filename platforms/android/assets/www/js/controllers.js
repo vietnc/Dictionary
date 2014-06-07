@@ -1,4 +1,4 @@
-var starterControllers = angular.module('starter.controllers', ["ngTouch", "angucomplete-alt", 'ionic']);
+var starterControllers = angular.module('starter.controllers', ['ionic']);
 starterControllers
     .controller('AppCtrl', function($scope) {
         })

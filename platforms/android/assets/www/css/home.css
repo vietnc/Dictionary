@@ -12,11 +12,13 @@
 .label-search-dict{
     background: #fff;
     border: 1px solid #eee;
+    height: 40px;
 }
 .search-bar{
     margin-left: 40px;
     width: auto;
     border-bottom: 1px solid #ddd;
+    height: 55px;
 }
 .search-bar label{
     margin-top: -4px!important;
@@ -26,4 +28,9 @@
 }
 .search-dict{
     width: 100%!important;
+    height: 40px!important;
+}
+.search-item{
+    color: #ddd !important;
+    font-size: 24px !important;
 }

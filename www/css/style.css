@@ -3,9 +3,20 @@
     border-color: #ddd;
     border-bottom: 1px solid #ddd;
 }
+.menu-button{
+    padding: 5px 8px !important;
+}
+.main-body.has-header{
+    top: 55px;
+}
+
 .nav-bar{
     width: 100%;
+    height: 55px;
     background: transparent !important;
+}
+.nav-bar h1{
+    line-height: 55px!important;
 }
 .title{
     color: #3b5998!important;
@@ -33,9 +44,9 @@ ion-side-menu header{
 ion-side-menu .item{
     border-color: #ddd;
 }
-a.item:after, button.item:after, .item[href] .item-content:after, .item[ng-click] .item-content:after{
+/*a.item:after, button.item:after, .item[href] .item-content:after, .item[ng-click] .item-content:after{
     content: '' !important;
-}
+}*/
 ion-side-menu *{
     color: #3B5998 !important;
 }

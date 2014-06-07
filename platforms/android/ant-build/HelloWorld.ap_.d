@@ -16,14 +16,10 @@ F:\xampp\htdocs\dictionary\platforms\android\assets\av_dict.db \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www_1 \
 F:\xampp\htdocs\dictionary\platforms\android\assets\_where-is-www.txt \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\av_dict.db \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\config.xml \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\cordova.js \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\cordova_plugins.js \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\css \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\dat-x.sql \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\dat.sql \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\dict_data.db \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\fonts \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\icon.png \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\img \
@@ -38,7 +34,6 @@ F:\xampp\htdocs\dictionary\platforms\android\assets\www\spec.html \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\SQLitePlugin.js \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\templates \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\css\home.css \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\css\index.css \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\css\style.css \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\fonts\ionicons.eot \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\fonts\ionicons.svg \
@@ -62,100 +57,20 @@ F:\xampp\htdocs\dictionary\platforms\android\assets\www\js\db_config.js \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\js\directives.js \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\js\loadDB.js \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\js\controller\homeController.js \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\autocomplete \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\jquery.js \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\autocomplete\angucomplete.html \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\autocomplete\css \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\autocomplete\js \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\autocomplete\css\angucomplete-alt.css \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\autocomplete\js\angucomplete-alt.js \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\autocomplete\js\angular-touch.min.js \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\autocomplete\js\angular.min.js \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\beta4 \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\css \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\fonts \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\js \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\New folder \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\scss \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\beta4\css \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\beta4\fonts \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\beta4\js \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\beta4\css\ionic.css \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\beta4\css\ionic.min.css \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\beta4\fonts\ionicons.eot \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\beta4\fonts\ionicons.svg \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\beta4\fonts\ionicons.ttf \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\beta4\fonts\ionicons.woff \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\beta4\js\angular \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\beta4\js\angular-ui \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\beta4\js\ionic-angular.js \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\beta4\js\ionic-angular.min.js \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\beta4\js\ionic.bundle.js \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\beta4\js\ionic.bundle.min.js \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\beta4\js\ionic.js \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\beta4\js\ionic.min.js \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\beta4\js\angular\angular-animate.js \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\beta4\js\angular\angular-animate.min.js \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\beta4\js\angular\angular-resource.js \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\beta4\js\angular\angular-resource.min.js \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\beta4\js\angular\angular-sanitize.js \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\beta4\js\angular\angular-sanitize.min.js \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\beta4\js\angular\angular.js \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\beta4\js\angular\angular.min.js \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\beta4\js\angular-ui\angular-ui-router.js \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\beta4\js\angular-ui\angular-ui-router.min.js \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\css\ionic.css \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\css\ionic.min.css \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\fonts\ionicons.eot \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\fonts\ionicons.svg \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\fonts\ionicons.ttf \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\fonts\ionicons.woff \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\js\angular \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\js\angular-ui \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\js\ionic-angular.js \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\js\ionic-angular.min.js \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\js\ionic.bundle.js \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\js\ionic.bundle.min.js \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\js\ionic.js \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\js\ionic.min.js \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\js\angular\angular-animate.js \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\js\angular\angular-animate.min.js \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\js\angular\angular-resource.js \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\js\angular\angular-resource.min.js \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\js\angular\angular-sanitize.js \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\js\angular\angular-sanitize.min.js \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\js\angular\angular.js \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\js\angular\angular.min.js \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\js\angular-ui\angular-ui-router.js \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\js\angular-ui\angular-ui-router.min.js \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\New folder\css \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\New folder\fonts \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\New folder\js \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\New folder\css\ionic.css \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\New folder\css\ionic.min.css \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\New folder\fonts\ionicons.eot \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\New folder\fonts\ionicons.svg \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\New folder\fonts\ionicons.ttf \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\New folder\fonts\ionicons.woff \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\New folder\js\angular \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\New folder\js\angular-ui \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\New folder\js\ionic-angular.js \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\New folder\js\ionic-angular.min.js \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\New folder\js\ionic.bundle.js \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\New folder\js\ionic.bundle.min.js \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\New folder\js\ionic.js \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\New folder\js\ionic.min.js \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\New folder\js\angular\angular-animate.js \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\New folder\js\angular\angular-animate.min.js \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\New folder\js\angular\angular-resource.js \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\New folder\js\angular\angular-resource.min.js \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\New folder\js\angular\angular-sanitize.js \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\New folder\js\angular\angular-sanitize.min.js \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\New folder\js\angular\angular.js \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\New folder\js\angular\angular.min.js \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\New folder\js\angular-ui\angular-ui-router.js \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\New folder\js\angular-ui\angular-ui-router.min.js \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\scss\ionic.scss \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\scss\ionicons \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\scss\_action-sheet.scss \

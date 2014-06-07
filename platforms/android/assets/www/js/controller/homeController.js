@@ -8,8 +8,8 @@ starterControllers.controller('DictHomeCtrl', function($scope,$timeout) {
     $scope.wordSelected = false;
     $scope.resultsCollection = [];
     /**
-         * Select word
-         */
+    * Select word
+    */
     $scope.selectResult = function(result) {
         $scope.wordSelected = true;
         $scope.selectedObject = result;
@@ -17,15 +17,14 @@ starterControllers.controller('DictHomeCtrl', function($scope,$timeout) {
         $scope.searchStr = null;
     };
     /**
-         * Search dictionary
-         */
+    * Search dictionary
+    */
     $scope.searchDict = function(str, pageNum){
         $scope.wordSelected = false;
         var db = new DBAdapter();
         $scope.resultsCollection = [];    
         if(str !== '' && str.length >= 1){
-            var data = db.search(str, pageNum, MAX_NUMBER_WORDS_SEARCH).done(function(result) {
-               
+            db.search(str, pageNum, MAX_NUMBER_WORDS_SEARCH).done(function(result) {
                 for (var i = 0; i < result.rows.length; i++) {
                     var row = result.rows.item(i);
                     $scope.resultsCollection.push(row);

@@ -1,38 +1,43 @@
-<link href="css/home.css" rel="stylesheet">
+<head>
+    <link href="css/home.css" rel="stylesheet">
 
+</head>
 <ion-view has-header="false" title="" ng-controller="DictHomeCtrl">
     <div class="bar bar-header item-input-inset search-bar">
         <label class="item-input-wrapper label-search-dict">
             <i class="icon ion-ios7-search placeholder-icon"></i>
             <!--<angucomplete-alt results="resultsCollection" id="search_input" class="search-dict" placeholder="Tra từ" pause="0" selected-object="wordSelected" local-data="words" search-fields="title" title-field="title" minlength="1" input-class="form-control form-control-small" match-class="highlight-blue" />-->
-             <input placeholder="Tra từ" id="search_input" type="text" ng-model="searchStr" ng-change="searchDict(searchStr,1)" class="search-dict">
+            <input placeholder="Tra từ" id="search_input" type="text" ng-model="searchStr" ng-change="searchDict(searchStr,1)" class="search-dict">
         </label>
     </div>
     <ion-nav-buttons side="left">
-        <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+        <button menu-toggle="left" class="button button-icon icon ion-navicon menu-button"></button>
     </ion-nav-buttons>
 
-    <ion-content class="has-header">
+    <ion-content class="main-body has-header">
         <div class="main-content">
             <div class="list" ng-show="!wordSelected">
-                <a class="item" ng-click="selectResult(res)" href="#" ng-repeat="res in resultsCollection"> 
-                    {{res.title}}
+                <a class="item item-icon-right" ng-click="selectResult(res)" href="#" ng-repeat="res in resultsCollection"> 
+                    {{res.title}}                 
+                    <i class="icon ion-chevron-right search-item"></i>
+
+
                 </a>
             </div>
             <div class="list card search-result-box" ng-show="wordSelected">
                 <div class="item">
                     <span class="bold-span">{{selectedObject.title}}</span>  
                 </div>
-                 <div class="item item-body">
-                        <div ng-bind-html="selectedObject.content"></div>
-                    </div>
+                <div class="item item-body">
+                    <div ng-bind-html="selectedObject.content"></div>
+                </div>
 
-                    <div class="item tabs tabs-secondary tabs-icon-left">
-                        <a class="tab-item" href="#">
-                            <i class="icon ion-ios7-plus-outline"></i>
-                            Save
-                        </a>
-                    </div>
+                <div class="item tabs tabs-secondary tabs-icon-left">
+                    <a class="tab-item" href="#">
+                        <i class="icon ion-ios7-plus-outline"></i>
+                        Save
+                    </a>
+                </div>
 
             </div>
         </div>
