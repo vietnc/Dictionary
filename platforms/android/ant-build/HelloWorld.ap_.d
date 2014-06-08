@@ -53,9 +53,9 @@ F:\xampp\htdocs\dictionary\platforms\android\assets\www\js\app.js \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\js\common.js \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\js\controller \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\js\controllers.js \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\js\database.js \
+F:\xampp\htdocs\dictionary\platforms\android\assets\www\js\dbQuery.js \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\js\directives.js \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\js\loadDB.js \
+F:\xampp\htdocs\dictionary\platforms\android\assets\www\js\init.js \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\js\controller\homeController.js \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\jquery.js \
