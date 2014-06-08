@@ -106,3 +106,13 @@ ion-side-menu a:active{
 .next-word-item i{
     color: #ddd;
 }
+.word-content{
+    max-height: 300px;
+}
+a.load-more-result{
+    text-align: center;
+    background: #f5f5f5;
+}
+.short-content{
+    color: #888;
+}

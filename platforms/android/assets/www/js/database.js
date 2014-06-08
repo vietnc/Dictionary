@@ -10,16 +10,15 @@ var DBAdapter = function(dbType) {
             dbType = _DICT_AV_;
         }
         if (navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry)/)
-                && typeof cordova !== 'undefined') {
+            && typeof cordova !== 'undefined') {
             // on mobile device and cordova is loaded
             try {
-                var self = that;
                 that.db = window.sqlitePlugin.openDatabase({
                     name: 'av_dict'
                 });
                 that.checkDBExist().done(function(result) {
                     if (result === false) {
-                        //self.initDBWeb();
+                    //self.initDBWeb();
                     }
                 });
             } catch (error) {
@@ -55,18 +54,23 @@ DBAdapter.prototype.query = function(sql) {
         alert(error);
         d.resolve(false);
     }
-    console.log("que");
     return d.promise();
 }
+DBAdapter.prototype.getNextWord = function(currentId){
+    var sql = "SELECT id, title, content, speech FROM words WHERE id >= '" + currentId + "' LIMIT 2";
+    var result = this.query(sql);
+    return result;
+}
+
 DBAdapter.prototype.search = function(keyword, currentPage, numItemsPerPage) {
     if(typeof currentPage === 'undefined' || parseInt(currentPage) < 1){
         currentPage = 1;
     }
     if(typeof numItemsPerPage === 'undefined' || parseInt(numItemsPerPage) <= 0){
-        numItemsPerPage = 20;
+        numItemsPerPage = MAX_NUMBER_WORDS_SEARCH;
     }
     var offset = (currentPage - 1) * numItemsPerPage;
-    var sql = "SELECT id, title, content FROM words WHERE title like '" + keyword + "%' ORDER by title ASC LIMIT " + offset +  ", " + numItemsPerPage;
+    var sql = "SELECT id, title, content, speech FROM words WHERE title like '" + keyword + "%' ORDER by title ASC LIMIT " + offset +  ", " + numItemsPerPage;
     console.log("exe: " + sql);
     var result = this.query(sql);
     return result;
@@ -123,7 +127,7 @@ DBAdapter.prototype.readSqlFile = function() {
             console.log('success loading sql' + url);
             try {
                 var lines = data.split(/;\r?\n/),
-                        blank = /^\s*$/;
+                blank = /^\s*$/;
                 self.db.transaction(function(tx) {
 
                     for (var i = 0; i < lines.length; i++) {

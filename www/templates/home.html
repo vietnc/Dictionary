@@ -13,32 +13,39 @@
         <button menu-toggle="left" class="button button-icon icon ion-navicon menu-button"></button>
     </ion-nav-buttons>
 
-    <ion-content class="main-body has-header">
+    <ion-content class="main-body has-header" id="home-content">
         <div class="main-content">
-            <div class="list search-result" ng-show="!wordSelected">
-                <a class="item item-icon-right" href="#" ng-repeat="res in resultsCollection" ng-click="selectResult($index)"> 
-                    <span>
-                        {{res.title}}
-                    </span>
-                    <br/>
-                    <span class="short-content">{{res.content}}</span>
-                    <i class="icon ion-ios7-arrow-right search-item"></i>
-                </a>
-            </div>
-            <div class="list card search-result-box" ng-show="wordSelected">
+             <div class="list card search-result-box" id="word_selected" ng-show="wordSelected">
                 <div class="item">
                     <span class="bold-span">{{selectedObject.title}}</span>  
+                    <span><{{selectedObject.speech}}></span>
                 </div>
                 <div class="item item-body">
-                    <div ng-bind-html="selectedObject.content"></div>
+                    <ion-scroll class="word-content">
+                        <div ng-bind-html="selectedObject.content"></div>
+                    </ion-scroll>
                 </div>
 
-                <div class="item next-word-item" ng-click="selectResult(nextObject.index)">
+                <div class="item next-word-item" ng-click="selectNextWord(nextObject.id)">
                     <div class="next-word-link item-icon-right" href="#">{{nextObject.title}}
-                     <i class="icon ion-ios7-arrow-right"></i>
+                        <i class="icon ion-ios7-arrow-right"></i>
                     </div>  
                 </div>
             </div>
+                <div class="list search-result" ng-show="!wordSelected">
+                    <a class="item item-icon-right" href="#" ng-repeat="res in resultsCollection" ng-click="selectResult($index)"> 
+                        <span>
+                            {{res.title}}
+                        </span>
+                        <br/>
+                        <span class="short-content">{{res.content}}</span>
+                        <i class="icon ion-ios7-arrow-right search-item"></i>
+                    </a>
+                    <a class="item load-more-result" ng-if="hasNextPage" ng-click="searchDict(searchStr,currentPage+1)" href="#">
+                        Show more result
+                    </a>
+                </div>
+           
         </div>
     </ion-content>
 </ion-view>
