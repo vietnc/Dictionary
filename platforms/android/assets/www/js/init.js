@@ -73,8 +73,11 @@ var db = {
             },success,error);
         };
         var success = function() {
+            alert("success");
         };
         var error = function(message) {
+                        alert("eror");
+
         };
         
         var options = {
