@@ -5,16 +5,27 @@
 
 
 starterControllers.controller('DictHomeCtrl', function($scope,$timeout) {
+    $scope.view = 'home';
     $scope.wordSelected = false;
     $scope.resultsCollection = [];
     /**
     * Select word
     */
-    $scope.selectResult = function(result) {
-        $scope.wordSelected = true;
-        $scope.selectedObject = result;
-        $scope.resultsCollection = [];
-        $scope.searchStr = null;
+    $scope.selectResult = function(wordIndex) {
+        // word selected
+        var lengthResults = $scope.resultsCollection.length;
+        if(wordIndex <  lengthResults){
+            $scope.wordSelected = true;
+            $scope.selectedObject = $scope.resultsCollection[wordIndex];
+            $scope.searchStr = null;
+        }
+        // next word
+        var nextWordIndex =  wordIndex+1;
+        if(nextWordIndex < lengthResults){
+            $scope.nextObject = $scope.resultsCollection[wordIndex+1];
+            $scope.nextObject.index = wordIndex+1;
+        }
+     
     };
     /**
     * Search dictionary

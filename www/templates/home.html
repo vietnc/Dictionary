@@ -15,18 +15,16 @@
 
     <ion-content class="main-body has-header">
         <div class="main-content">
-            <!--search list-->
             <div class="list search-result" ng-show="!wordSelected">
-                <a class="item item-icon-right" href="#" ng-repeat="res in resultsCollection" ng-init="wordIndex = $index" ng-click="selectResult(wordIndex)"> 
+                <a class="item item-icon-right" href="#" ng-repeat="res in resultsCollection" ng-click="selectResult($index)"> 
                     <span>
-                       {{res.shortContent}}
+                        {{res.title}}
                     </span>
                     <br/>
-                    <span class="short-content">{{res.shortContent}}</span>
+                    <span class="short-content">{{res.content}}</span>
                     <i class="icon ion-ios7-arrow-right search-item"></i>
                 </a>
             </div>
-            <!--select word-->
             <div class="list card search-result-box" ng-show="wordSelected">
                 <div class="item">
                     <span class="bold-span">{{selectedObject.title}}</span>  
@@ -35,12 +33,11 @@
                     <div ng-bind-html="selectedObject.content"></div>
                 </div>
 
-                <div class="item tabs tabs-secondary tabs-icon-left">
-                    <a class="next-word-link item-icon-right" ng-click="selectResult(nextObject.index)" href="#">{{nextObject.title}}
+                <div class="item next-word-item" ng-click="selectResult(nextObject.index)">
+                    <div class="next-word-link item-icon-right" href="#">{{nextObject.title}}
                      <i class="icon ion-ios7-arrow-right"></i>
-                    </a>  
+                    </div>  
                 </div>
-
             </div>
         </div>
     </ion-content>

@@ -18,7 +18,6 @@ starterControllers.controller('DictHomeCtrl', function($scope,$timeout) {
             $scope.wordSelected = true;
             $scope.selectedObject = $scope.resultsCollection[wordIndex];
             $scope.searchStr = null;
-            console.log($scope.selectedObject);
         }
         // next word
         var nextWordIndex =  wordIndex+1;
@@ -39,8 +38,6 @@ starterControllers.controller('DictHomeCtrl', function($scope,$timeout) {
             db.search(str, pageNum, MAX_NUMBER_WORDS_SEARCH).done(function(result) {
                 for (var i = 0; i < result.rows.length; i++) {
                     var row = result.rows.item(i);
-                    row.fullContent  =  row.content.split('<br/>');
-                    row.shortContent = row.fullContent[2];
                     $scope.resultsCollection.push(row);
                 }
             });

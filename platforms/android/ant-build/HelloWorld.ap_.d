@@ -50,10 +50,10 @@ F:\xampp\htdocs\dictionary\platforms\android\assets\www\img\icon\Messages-32.png
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\img\icon\save-32.png \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\img\icon\Valentine_day-20-32.png \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\js\app.js \
+F:\xampp\htdocs\dictionary\platforms\android\assets\www\js\common.js \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\js\controller \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\js\controllers.js \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\js\database.js \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\js\db_config.js \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\js\directives.js \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\js\loadDB.js \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\js\controller\homeController.js \
