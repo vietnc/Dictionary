@@ -106,7 +106,10 @@ F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\scss\ionicons\
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\scss\ionicons\_ionicons-font.scss \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\scss\ionicons\_ionicons-icons.scss \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\scss\ionicons\_ionicons-variables.scss \
+F:\xampp\htdocs\dictionary\platforms\android\assets\www\plugins\com.google.cordova.plugin.AdMobPlugin \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\plugins\com.phonegap.plugins.sqlite \
+F:\xampp\htdocs\dictionary\platforms\android\assets\www\plugins\com.google.cordova.plugin.AdMobPlugin\www \
+F:\xampp\htdocs\dictionary\platforms\android\assets\www\plugins\com.google.cordova.plugin.AdMobPlugin\www\AdMobPlugin.js \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\plugins\com.phonegap.plugins.sqlite\www \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\plugins\com.phonegap.plugins.sqlite\www\SQLitePlugin.js \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\res\icon \

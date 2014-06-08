@@ -1,4 +1,11 @@
 F:\xampp\htdocs\dictionary\platforms\android\ant-build\classes.dex : \
+F:\xampp\htdocs\dictionary\platforms\android\ant-build\classes\com\google\cordova\plugin\AdMobPlugin$1.class \
+F:\xampp\htdocs\dictionary\platforms\android\ant-build\classes\com\google\cordova\plugin\AdMobPlugin$2.class \
+F:\xampp\htdocs\dictionary\platforms\android\ant-build\classes\com\google\cordova\plugin\AdMobPlugin$3.class \
+F:\xampp\htdocs\dictionary\platforms\android\ant-build\classes\com\google\cordova\plugin\AdMobPlugin$4.class \
+F:\xampp\htdocs\dictionary\platforms\android\ant-build\classes\com\google\cordova\plugin\AdMobPlugin$5.class \
+F:\xampp\htdocs\dictionary\platforms\android\ant-build\classes\com\google\cordova\plugin\AdMobPlugin$BannerListener.class \
+F:\xampp\htdocs\dictionary\platforms\android\ant-build\classes\com\google\cordova\plugin\AdMobPlugin.class \
 F:\xampp\htdocs\dictionary\platforms\android\ant-build\classes\com\phonegap\dict\BuildConfig.class \
 F:\xampp\htdocs\dictionary\platforms\android\ant-build\classes\com\phonegap\dict\HelloWorld.class \
 F:\xampp\htdocs\dictionary\platforms\android\ant-build\classes\com\phonegap\dict\R$attr.class \
@@ -24,3 +31,4 @@ F:\xampp\htdocs\dictionary\platforms\android\ant-build\classes\org\pgsqlite\SQLi
 F:\xampp\htdocs\dictionary\platforms\android\ant-build\classes\org\pgsqlite\SQLitePlugin$2.class \
 F:\xampp\htdocs\dictionary\platforms\android\ant-build\classes\org\pgsqlite\SQLitePlugin.class \
 F:\xampp\htdocs\dictionary\platforms\android\ant-build\dexedLibs\classes-300b6b297bbd6205a53c407af7ed98e5.jar \
+F:\xampp\htdocs\dictionary\platforms\android\ant-build\dexedLibs\GoogleAdMobAdsSdk-6.4.1-37e41bf832eb35871e9def10572e5b25.jar \

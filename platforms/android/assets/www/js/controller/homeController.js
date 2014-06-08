@@ -4,7 +4,7 @@
  */
 
 
-starterControllers.controller('DictHomeCtrl', function($scope,$timeout,$location, $anchorScroll) {
+starterControllers.controller('DictHomeCtrl', function($scope,$timeout,$location, $anchorScroll, $ionicScrollDelegate) {
     $scope.view = 'home';
     $scope.wordSelected = false;
     $scope.resultsCollection = [];
@@ -14,13 +14,6 @@ starterControllers.controller('DictHomeCtrl', function($scope,$timeout,$location
     * Select word
     */
     $scope.selectResult = function(wordIndex) {
-        // set the location.hash to the id of
-        // the element you wish to scroll to.
-        $location.hash('word_selected');
-
-        // call $anchorScroll()
-        $anchorScroll();
-        
         // word selected
         var lengthResults = $scope.resultsCollection.length;
         if(wordIndex <  lengthResults){
@@ -36,6 +29,13 @@ starterControllers.controller('DictHomeCtrl', function($scope,$timeout,$location
             $scope.selectNextWord($scope.selectedObject.id);
         }
         $scope.resultsCollection = [];
+        $timeout(function() {
+            // set the location.hash to the id of
+            // the element you wish to scroll to.
+            $location.hash('word_selected');
+            // call $anchorScroll()
+            $anchorScroll();
+        },200);
        
     };
     /**
