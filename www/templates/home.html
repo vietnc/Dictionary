@@ -1,6 +1,5 @@
 <head>
     <link href="css/home.css" rel="stylesheet">
-
 </head>
 <ion-view has-header="false" title="" ng-controller="DictHomeCtrl">
     <div class="bar bar-header item-input-inset search-bar">
@@ -16,14 +15,18 @@
 
     <ion-content class="main-body has-header">
         <div class="main-content">
+            <!--search list-->
             <div class="list search-result" ng-show="!wordSelected">
-                <a class="item item-icon-right" ng-click="selectResult(res)" href="#" ng-repeat="res in resultsCollection"> 
-                    {{res.title}}                 
+                <a class="item item-icon-right" href="#" ng-repeat="res in resultsCollection" ng-init="wordIndex = $index" ng-click="selectResult(wordIndex)"> 
+                    <span>
+                       {{res.shortContent}}
+                    </span>
+                    <br/>
+                    <span class="short-content">{{res.shortContent}}</span>
                     <i class="icon ion-ios7-arrow-right search-item"></i>
-
-
                 </a>
             </div>
+            <!--select word-->
             <div class="list card search-result-box" ng-show="wordSelected">
                 <div class="item">
                     <span class="bold-span">{{selectedObject.title}}</span>  
@@ -33,10 +36,9 @@
                 </div>
 
                 <div class="item tabs tabs-secondary tabs-icon-left">
-                    <a class="tab-item" href="#">
-                        <i class="icon ion-ios7-plus-outline"></i>
-                        Save
-                    </a>
+                    <a class="next-word-link item-icon-right" ng-click="selectResult(nextObject.index)" href="#">{{nextObject.title}}
+                     <i class="icon ion-ios7-arrow-right"></i>
+                    </a>  
                 </div>
 
             </div>

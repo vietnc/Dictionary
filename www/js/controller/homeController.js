@@ -5,16 +5,28 @@
 
 
 starterControllers.controller('DictHomeCtrl', function($scope,$timeout) {
+    $scope.view = 'home';
     $scope.wordSelected = false;
     $scope.resultsCollection = [];
     /**
     * Select word
     */
-    $scope.selectResult = function(result) {
-        $scope.wordSelected = true;
-        $scope.selectedObject = result;
-        $scope.resultsCollection = [];
-        $scope.searchStr = null;
+    $scope.selectResult = function(wordIndex) {
+        // word selected
+        var lengthResults = $scope.resultsCollection.length;
+        if(wordIndex <  lengthResults){
+            $scope.wordSelected = true;
+            $scope.selectedObject = $scope.resultsCollection[wordIndex];
+            $scope.searchStr = null;
+            console.log($scope.selectedObject);
+        }
+        // next word
+        var nextWordIndex =  wordIndex+1;
+        if(nextWordIndex < lengthResults){
+            $scope.nextObject = $scope.resultsCollection[wordIndex+1];
+            $scope.nextObject.index = wordIndex+1;
+        }
+     
     };
     /**
     * Search dictionary
@@ -27,6 +39,8 @@ starterControllers.controller('DictHomeCtrl', function($scope,$timeout) {
             db.search(str, pageNum, MAX_NUMBER_WORDS_SEARCH).done(function(result) {
                 for (var i = 0; i < result.rows.length; i++) {
                     var row = result.rows.item(i);
+                    row.fullContent  =  row.content.split('<br/>');
+                    row.shortContent = row.fullContent[2];
                     $scope.resultsCollection.push(row);
                 }
             });

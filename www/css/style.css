@@ -93,3 +93,12 @@ ion-side-menu a:active{
 .item-complex .item-content, .item-radio .item-content{
     padding: 10px 45px 10px 15px;
 }
+.next-word-link{
+    width: 100% !important;
+    text-decoration: none;
+    text-indent: 15px;
+}
+.short-content{
+    color: #888;
+    font-size: 14px;
+}
