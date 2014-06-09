@@ -40,7 +40,7 @@ var db = {
     // Update DOM on a Received Event
     receivedEvent: function(id) {
         db.addBanner();
-        var parentElement = document.getElementById(id);
+        var parentElement = document.getElementById("ads_block");
         var listeningElement = parentElement.querySelector('.listening');
         var receivedElement = parentElement.querySelector('.received');
         listeningElement.setAttribute('style', 'display:none;');

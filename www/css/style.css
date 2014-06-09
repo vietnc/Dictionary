@@ -1,7 +1,7 @@
 /* Empty. Add your own CSS if you like */
 .bar.bar-stable{
     border-color: #ddd;
-    border-bottom: 1px solid #ddd;
+    border-bottom: none;
 }
 .menu-button{
     padding: 5px 8px !important;
@@ -111,8 +111,52 @@ ion-side-menu a:active{
 }
 a.load-more-result{
     text-align: center;
-    background: #f5f5f5;
+    background: #ffffff;
+    color: #3B5998;
+    height: 40px;
+    font-size: 24px;
 }
 .short-content{
     color: #888;
+}
+.char-list{
+    background: #f2f2f2!important;
+    width: 35px;
+    float: left;
+    position: relative;
+    display: inline-block;
+    color: #ddd;
+    border: none;
+}
+.char-list .item{
+    height: 35px;
+    line-height: 5px;
+    font-size: 14px;
+    border: none;
+
+}
+.char-list .item:active{
+    color: #3B5998;
+    background: #f2f2f2;
+}
+.right-content{
+    position: absolute;
+    width: auto;
+    left: 50px;
+    right: 0px;
+}
+.search-result-box.right-content{
+    left: 40px;
+
+}
+.char-list .item{
+    text-align: center;
+}
+.char-list .item.active{
+    color: #3B5998;
+    background: #ffffff;
+}
+.search-result .item{
+    border: none;
+border-bottom: 2px solid #fcfcfc
 }

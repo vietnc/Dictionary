@@ -5,11 +5,14 @@
 
 
 starterControllers.controller('DictHomeCtrl', function($scope,$timeout,$location, $anchorScroll, $ionicScrollDelegate) {
+    
     $scope.view = 'home';
     $scope.wordSelected = false;
     $scope.resultsCollection = [];
     $scope.currentPage = 1;
     $scope.hasNextPage = false;
+    $scope.isCharFilter = false;
+    $scope.typeSearch = TYPE_SEARCH;
     /**
     * Select word
     */
@@ -20,6 +23,7 @@ starterControllers.controller('DictHomeCtrl', function($scope,$timeout,$location
             $scope.wordSelected = true;
             $scope.selectedObject = $scope.resultsCollection[wordIndex];
             $scope.searchStr = null;
+            $scope.keyword = null;
         }
         // next word
         var nextWordIndex =  wordIndex+1;
@@ -32,9 +36,12 @@ starterControllers.controller('DictHomeCtrl', function($scope,$timeout,$location
         $timeout(function() {
             // set the location.hash to the id of
             // the element you wish to scroll to.
-            $location.hash('word_selected');
-            // call $anchorScroll()
-            $anchorScroll();
+            $scope.$apply(function(){
+                $location.hash('top');
+                // call $anchorScroll()
+                $anchorScroll();
+            });
+           
         },200);
        
     };
@@ -58,34 +65,43 @@ starterControllers.controller('DictHomeCtrl', function($scope,$timeout,$location
     /**
     * Search dictionary
     */
-    $scope.searchDict = function(str, pageNum){
-        $scope.currentPage = pageNum;
+    $scope.searchDict = function(str, pageNum,typeSearch){
+        if(typeof typeSearch === 'undefined' || typeSearch === TYPE_SEARCH){
+            // type search on search box
+            $scope.typeSearch = TYPE_SEARCH;
+        }else{
+            // type search by filter charater
+            $scope.typeSearch = TYPE_FILTER_CHAR;
+            $scope.searchStr = null;
+        }
+        $scope.keyword = str;
         if(pageNum <= 1){
             $scope.resultsCollection = []; 
             $scope.currentPage = 1;
         }
+        $scope.currentPage = pageNum;
         $scope.wordSelected = false;
         var db = new DBAdapter();
-        if(str !== '' && str.length >= 1){
-            db.search(str, $scope.currentPage, MAX_NUMBER_WORDS_SEARCH).done(function(result) {
-              
-                for (var i = 0; i < result.rows.length; i++) {
+        if($scope.keyword !== '' && $scope.keyword.length >= 1){
+            db.search($scope.keyword, $scope.currentPage, MAX_NUMBER_WORDS_SEARCH).done(function(result) {
+                var resultLength = result.rows.length;
+                for (var i = 0; i < resultLength; i++) {
                     var row = result.rows.item(i);
                     $scope.resultsCollection.push(row);
                 }
-                if($scope.resultsCollection.length < MAX_NUMBER_WORDS_SEARCH){
+                if(resultLength < MAX_NUMBER_WORDS_SEARCH){
                     $scope.hasNextPage = false;
                 }else{
                     $scope.hasNextPage = true;
                 }
-                
             });
             $timeout(function(){
                 $scope.$apply();
-            },100);
+            },300);
         }
         db = null;
 
     }
+    $scope.characters = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','X','Y','Z','W'];
     
 })

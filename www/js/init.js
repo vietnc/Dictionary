@@ -34,13 +34,13 @@ var db = {
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         var DB = new DBAdapter();
-        db.receivedEvent('deviceready');
+        //db.receivedEvent('deviceready');
     //DB_Reader.getAllWords();
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
         db.addBanner();
-        var parentElement = document.getElementById(id);
+        var parentElement = document.getElementById("ads_block");
         var listeningElement = parentElement.querySelector('.listening');
         var receivedElement = parentElement.querySelector('.received');
         listeningElement.setAttribute('style', 'display:none;');

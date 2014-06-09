@@ -11,3 +11,5 @@ var db_config = {
 };
 var AD_UNIT_ID = 'ca-app-pub-8258598146098045/5804971013';
 var MAX_NUMBER_WORDS_SEARCH = 20;
+var TYPE_SEARCH = 0;
+var TYPE_FILTER_CHAR = 1;
