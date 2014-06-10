@@ -38,16 +38,6 @@ F:\xampp\htdocs\dictionary\platforms\android\assets\www\fonts\ionicons.eot \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\fonts\ionicons.svg \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\fonts\ionicons.ttf \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\fonts\ionicons.woff \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\img\icon \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\img\logo.png \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\img\icon\chat_talk_voice_bubble_phone-32 (1).png \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\img\icon\chat_talk_voice_bubble_phone-32.png \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\img\icon\communication-32.png \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\img\icon\house-32.png \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\img\icon\male_avatar19-32.png \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\img\icon\Messages-32.png \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\img\icon\save-32.png \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\img\icon\Valentine_day-20-32.png \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\js\app.js \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\js\common.js \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\js\controller \

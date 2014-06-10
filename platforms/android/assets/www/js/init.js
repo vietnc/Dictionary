@@ -34,7 +34,7 @@ var db = {
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         var DB = new DBAdapter();
-        db.receivedEvent('deviceready');
+        //db.receivedEvent('deviceready');
     //DB_Reader.getAllWords();
     },
     // Update DOM on a Received Event

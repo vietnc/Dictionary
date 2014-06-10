@@ -8,29 +8,60 @@
     </ion-pane>
 
     <ion-side-menu side="left">
-        <header class="bar bar-header bar-stable menu-bar">
-            <h1 class="title">Menu</h1>
-        </header>
-        <ion-content class="has-header">
+       
+        <ion-content>
             <ion-list>
                 <ion-item nav-clear menu-close href="#/app/home">
                     <span class="ion-home"></span>&nbsp;
                     Dictionary
                 </ion-item>
+                <ion-list class="sub-nav">
+                    <ion-item >
+                        <span>Select dictionary</span>
+                    </ion-item>
+                    <ion-item >
+                        <span>Download dictionary</span>
+                    </ion-item>
+                </ion-list>
+
                 <ion-item nav-clear menu-close href="#/app/learningword">
                     <span class="ion-ios7-heart-outline"></span>&nbsp;
 
                     Learning words
                 </ion-item>
+                  <ion-list class="sub-nav">
+                    <ion-item >
+                        <span>List</span>
+                    </ion-item>
+                    <ion-item >
+                        <span>Trends</span>
+                    </ion-item>
+                </ion-list>
                 <ion-item nav-clear menu-close href="#/app/community">
                     <span class="ion-ios7-chatboxes-outline"></span>&nbsp;
 
                     Community
                 </ion-item>
+                  <ion-list class="sub-nav">
+                    <ion-item >
+                        <span>Select your country</span>
+                    </ion-item>
+                    <ion-item >
+                        <span>Your QA</span>
+                    </ion-item>
+                </ion-list>
                 <ion-item nav-clear menu-close href="#/app/about">
                     <span class="ion-person-stalker"></span>&nbsp;
                     About
                 </ion-item>
+                 <ion-list class="sub-nav">
+                    <ion-item >
+                        <span>Product</span>
+                    </ion-item>
+                    <ion-item >
+                        <span>Contact us</span>
+                    </ion-item>
+                </ion-list>
             </ion-list>
         </ion-content>
     </ion-side-menu>

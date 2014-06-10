@@ -1,4 +1,18 @@
 /* Empty. Add your own CSS if you like */
+.sub-nav .list{
+    background: transparent;
+}
+.sub-nav .item{
+    background: transparent;
+    border: none;
+    height: 40px;
+    font-size: 14px;
+    text-indent: 25px;
+    line-height: 8px;
+}
+.sub-nav .item:first-child{
+    border-bottom: 1px solid #ddd;
+}
 .bar.bar-stable{
     border-color: #ddd;
     border-bottom: none;
@@ -18,11 +32,8 @@
 .nav-bar h1{
     line-height: 55px!important;
 }
-.title{
-    color: #3b5998!important;
-}
 button.ion-navicon{
-    color: #3B5998  !important;
+    color: #aaa  !important;
 }
 
 .search-result-box .tab-item{
@@ -34,7 +45,6 @@ button.ion-navicon{
 }
 ion-side-menu > *, ion-side-menu .item-content{
     background: #f2f2f2 !important;
-    color: #3B5998 !important;
 }
 ion-side-menu header{
     background: #f2f2f2 !important;
@@ -47,9 +57,7 @@ ion-side-menu .item{
 /*a.item:after, button.item:after, .item[href] .item-content:after, .item[ng-click] .item-content:after{
     content: '' !important;
 }*/
-ion-side-menu *{
-    color: #3B5998 !important;
-}
+
 ion-side-menu a:active{
     background: #ddd !important;
     border: none !important;
@@ -57,15 +65,11 @@ ion-side-menu a:active{
 .search-box{
     margin-top: 20px;
 }
-.main-content{
-    /*padding: 5px;*/
-}
+
 .menu-bar{
     border-bottom: 1px solid #ddd !important;
 }
-.menu-bar h1{
-    color:#3B5998 !important;
-}
+
 .bold-span{
     font-weight: bold;
 }
@@ -74,13 +78,6 @@ ion-side-menu a:active{
     margin-bottom: 1px !important;
 }
 
-.icon-home{
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    background: url(../img/icon/house-32.png);
-    background-size: 16px 16px;
-}
 .grade-b .menu-content, .grade-c .menu-content{
     border-left: none;
     border-right: none;
@@ -101,10 +98,16 @@ ion-side-menu a:active{
 }
 
 .next-word-item:active{
-    background: #f2f2f2;
+    background: #f9f9f9;
+}
+.next-word-item{
+    color: #aaa;
 }
 .next-word-item i{
     color: #ddd;
+}
+.next-word-item:active i{
+    color: #fff;
 }
 .word-content{
     max-height: 300px;
@@ -112,12 +115,14 @@ ion-side-menu a:active{
 a.load-more-result{
     text-align: center;
     background: #ffffff;
-    color: #3B5998;
+    color: #ddd;
     height: 40px;
     font-size: 24px;
 }
 .short-content{
     color: #888;
+    font-size: 14px;
+    font-style: italic;
 }
 .char-list{
     background: #f2f2f2!important;
@@ -136,7 +141,7 @@ a.load-more-result{
 
 }
 .char-list .item:active{
-    color: #3B5998;
+    color: #000;
     background: #f2f2f2;
 }
 .right-content{
@@ -153,10 +158,49 @@ a.load-more-result{
     text-align: center;
 }
 .char-list .item.active{
-    color: #3B5998;
+    color: #000;
     background: #ffffff;
 }
 .search-result .item{
     border: none;
-border-bottom: 2px solid #fcfcfc
+    border-bottom: 2px solid #fcfcfc;
+    padding-left: 0;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+.search-result-box{
+    border-top:none;
+    box-shadow: none;
+    border-radius: 0px;
+}
+.search-result-box .item{
+    border:none;
+    border-top: 1px solid #f9f9f9;
+    padding-left: 0;
+}
+.search-result-box .item:first-child{
+    border:none;
+}
+.label-search-dict{
+    border-radius: 5px;
+    border: none !important;
+    border-bottom: 1px solid #70DFF5 !important;
+}
+.label-search-dict i{
+    color: #70DFF5;
+}
+.speech{
+    color: #aaa;
+}
+.label-search-dict input{
+    font-size: 16px;
+}
+.label-search-dict input::-webkit-input-placeholder{
+    color: #eee;
+}
+.search-result .item i{
+    right: 0px;
+}
+.search-result-box .item i{
+    right: -10px;
 }

@@ -7,7 +7,7 @@
         <label class="item-input-wrapper label-search-dict">
             <i class="icon ion-ios7-search placeholder-icon"></i>
             <!--<angucomplete-alt results="resultsCollection" id="search_input" class="search-dict" placeholder="Tra từ" pause="0" selected-object="wordSelected" local-data="words" search-fields="title" title-field="title" minlength="1" input-class="form-control form-control-small" match-class="highlight-blue" />-->
-            <input placeholder="Tra từ" id="search_input" type="text" ng-model="searchStr" ng-change="searchDict(searchStr,1,0)" class="search-dict">
+            <input placeholder="Search" id="search_input" type="text" ng-model="searchStr" ng-change="searchDict(searchStr,1,0)" class="search-dict">
         </label>
     </div>
     <ion-nav-buttons side="left">
@@ -25,8 +25,9 @@
             </div>
             <div class="list card search-result-box right-content" id="word_selected" ng-show="wordSelected">
                 <div class="item">
+                    <i class="icon ion-ios7-volume-high"></i>
                     <span class="bold-span">{{selectedObject.title}}</span>  
-                    <span><{{selectedObject.speech}}></span>
+                    <span class="speech" ng-bind-html="selectedObject.speech"></span>
                 </div>
                 <div class="item item-body">
                     <ion-scroll class="word-content">

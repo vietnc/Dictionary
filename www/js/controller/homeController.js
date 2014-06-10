@@ -4,7 +4,7 @@
  */
 
 
-starterControllers.controller('DictHomeCtrl', function($scope,$timeout,$location, $anchorScroll, $ionicScrollDelegate) {
+starterControllers.controller('DictHomeCtrl', function($scope,$timeout,$location, $anchorScroll, $sce) {
     
     $scope.view = 'home';
     $scope.wordSelected = false;
@@ -22,6 +22,9 @@ starterControllers.controller('DictHomeCtrl', function($scope,$timeout,$location
         if(wordIndex <  lengthResults){
             $scope.wordSelected = true;
             $scope.selectedObject = $scope.resultsCollection[wordIndex];
+            var speech = $scope.selectedObject.speech;
+            $scope.selectedObject.speech = $sce.trustAsHtml(speech);
+            speech = null;
             $scope.searchStr = null;
             $scope.keyword = null;
         }
