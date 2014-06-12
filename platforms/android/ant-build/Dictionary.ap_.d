@@ -13,6 +13,7 @@ F:\xampp\htdocs\dictionary\platforms\android\ant-build\res\drawable-mdpi\icon.pn
 F:\xampp\htdocs\dictionary\platforms\android\ant-build\res\drawable-xhdpi\icon.png \
 F:\xampp\htdocs\dictionary\platforms\android\assets\0000000000000001.db \
 F:\xampp\htdocs\dictionary\platforms\android\assets\av_dict.db \
+F:\xampp\htdocs\dictionary\platforms\android\assets\dictionary.db \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www \
 F:\xampp\htdocs\dictionary\platforms\android\assets\_where-is-www.txt \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\config.xml \

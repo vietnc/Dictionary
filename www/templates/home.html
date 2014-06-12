@@ -18,16 +18,19 @@
         <div id="top"></div>
 
         <div class="main-content">
+            <!--List character-->
             <div class="list char-list">
                 <a ng-class="{item: 1==1, active: typeSearch==1&&char==keyword}" ng-click="searchDict(char,1,1)" ng-repeat="char in characters" href="#">
                     {{char}}
                 </a>
             </div>
+            <!--Selected word-->
             <div class="list card search-result-box right-content" id="word_selected" ng-show="wordSelected">
                 <div class="item">
                     <i class="icon ion-ios7-volume-high"></i>
                     <span class="bold-span">{{selectedObject.title}}</span>  
                     <span class="speech" ng-bind-html="selectedObject.speech"></span>
+                    <i class="icon ion-ios7-heart-outline" save-word></i>
                 </div>
                 <div class="item item-body">
                     <ion-scroll class="word-content">
@@ -40,7 +43,8 @@
                         <i class="icon ion-ios7-arrow-right"></i>
                     </div>  
                 </div>
-            </div>
+            </div> 
+            <!--List words-->
             <div class="list search-result right-content" ng-show="!wordSelected">
                 <a class="item item-icon-right" href="#" ng-repeat="res in resultsCollection" ng-click="selectResult($index)"> 
                     <span>

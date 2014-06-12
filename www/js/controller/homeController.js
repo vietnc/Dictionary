@@ -4,15 +4,15 @@
  */
 
 
-starterControllers.controller('DictHomeCtrl', function($scope,$timeout,$location, $anchorScroll, $sce) {
+starterControllers.controller('DictHomeCtrl', function($scope, $timeout, $location, $anchorScroll, $sce) {
     
-    $scope.view = 'home';
     $scope.wordSelected = false;
     $scope.resultsCollection = [];
     $scope.currentPage = 1;
     $scope.hasNextPage = false;
     $scope.isCharFilter = false;
     $scope.typeSearch = TYPE_SEARCH;
+    $scope.selectedObject = null;
     /**
     * Select word
     */
@@ -45,7 +45,7 @@ starterControllers.controller('DictHomeCtrl', function($scope,$timeout,$location
                 $anchorScroll();
             });
            
-        },200);
+        },_TIME_OUT_);
        
     };
     /**
@@ -59,7 +59,7 @@ starterControllers.controller('DictHomeCtrl', function($scope,$timeout,$location
                 $scope.nextObject = result.rows.item(1);
                 $timeout(function(){
                     $scope.$apply();
-                },100);
+                },_TIME_OUT_);
             }
         });
         db = null;
@@ -68,7 +68,7 @@ starterControllers.controller('DictHomeCtrl', function($scope,$timeout,$location
     /**
     * Search dictionary
     */
-    $scope.searchDict = function(str, pageNum,typeSearch){
+    $scope.searchDict = function(str, pageNum, typeSearch){
         if(typeof typeSearch === 'undefined' || typeSearch === TYPE_SEARCH){
             // type search on search box
             $scope.typeSearch = TYPE_SEARCH;
@@ -100,7 +100,7 @@ starterControllers.controller('DictHomeCtrl', function($scope,$timeout,$location
             });
             $timeout(function(){
                 $scope.$apply();
-            },300);
+            },_TIME_OUT_);
         }
         db = null;
 

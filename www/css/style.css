@@ -204,3 +204,9 @@ a.load-more-result{
 .search-result-box .item i{
     right: -10px;
 }
+.search-result-box .item:first-child i:last-child{
+    float: right;
+    margin-top: 3px;
+    color: #aaa;
+    cursor: pointer;
+}

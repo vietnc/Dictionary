@@ -34,7 +34,8 @@ public class Dictionary extends CordovaActivity
         try {
             String pName = this.getClass().getPackage().getName();
             this.copy("av_dict.db", "/data/data/" + pName + "/databases/");
-            this.copy("0000000000000001.db", "/data/data/" + pName + "/app_database/file__0/");
+            this.copy("dictionary.db", "/data/data/" + pName + "/databases/");
+            //this.copy("0000000000000001.db", "/data/data/" + pName + "/app_database/file__0/");
         } catch (IOException e) {
             e.printStackTrace();
         }
