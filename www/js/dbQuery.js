@@ -14,6 +14,7 @@ var DBAdapter = function(dbType) {
 
             dbType = that.dbType;
         }
+        console.log(dbType);
         var dbName = db_config[dbType];
         that.dbType = dbType;
         if (navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry)/)
@@ -72,9 +73,9 @@ DBAdapter.prototype.getNextWord = function(currentId){
     return result;
 }
 /**
- *  Search words
+ * Get pagination for get word list
  */
-DBAdapter.prototype.search = function(keyword, currentPage, numItemsPerPage) {
+DBAdapter.prototype.getPagination = function(currentPage, numItemsPerPage){
     if(typeof currentPage === 'undefined' || parseInt(currentPage) < 1){
         currentPage = 1;
     }
@@ -82,10 +83,25 @@ DBAdapter.prototype.search = function(keyword, currentPage, numItemsPerPage) {
         numItemsPerPage = MAX_NUMBER_WORDS_SEARCH;
     }
     var offset = (currentPage - 1) * numItemsPerPage;
-    var sql = "SELECT id, title, content, speech, voice, meta FROM words WHERE title like '" + keyword + "%' ORDER by title ASC LIMIT " + offset +  ", " + numItemsPerPage;
+    return  "LIMIT " + offset +  ", " + numItemsPerPage;
+}
+/**
+ *  Search words
+ */
+DBAdapter.prototype.search = function(keyword, currentPage, numItemsPerPage) {
+    var limit = this.getPagination(currentPage, numItemsPerPage);
+    var sql = "SELECT id, title, content, speech, voice, meta FROM words WHERE title like '" + keyword + "%' ORDER by title ASC " + limit;
     var result = this.query(sql);
     return result;
 };
+/**
+ * Get favorist list
+ */
+DBAdapter.prototype.getFavList = function(){
+    var sql = "SELECT id, title, content, speech, voice, meta FROM words ORDER BY id DESC";
+    var result = this.query(sql);
+    return result;
+}
 DBAdapter.prototype.dropTable = function(table) {
     var sql = "DROP TABLE IF EXISTS " + table;
     this.query(sql);
