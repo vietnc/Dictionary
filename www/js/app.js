@@ -64,7 +64,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
          * Word detail
          */
         .state('app.wordDetail', {
-            url: "/wordDetail",
+            url: "/wordDetail/:wordId",
             
             views: {
                 'menuContent' :{

@@ -44,9 +44,13 @@ F:\xampp\htdocs\dictionary\platforms\android\assets\www\js\common.js \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\js\controller \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\js\controllers.js \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\js\dbQuery.js \
-F:\xampp\htdocs\dictionary\platforms\android\assets\www\js\directives.js \
+F:\xampp\htdocs\dictionary\platforms\android\assets\www\js\directives \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\js\init.js \
+F:\xampp\htdocs\dictionary\platforms\android\assets\www\js\services \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\js\controller\homeController.js \
+F:\xampp\htdocs\dictionary\platforms\android\assets\www\js\controller\learningWordController.js \
+F:\xampp\htdocs\dictionary\platforms\android\assets\www\js\directives\directives.js \
+F:\xampp\htdocs\dictionary\platforms\android\assets\www\js\services\localDataService.js \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\jquery.js \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\css \
@@ -54,13 +58,16 @@ F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\fonts \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\js \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\scss \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\css\ionic.min.css \
+F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\css\ionic.min_old.css \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\fonts\ionicons.eot \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\fonts\ionicons.svg \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\fonts\ionicons.ttf \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\fonts\ionicons.woff \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\js\angular-ui \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\js\ionic.bundle.js \
+F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\js\ionic.bundle_old.js \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\js\angular-ui\angular-ui-router.js \
+F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\js\angular-ui\angular-ui-router_old.js \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\scss\ionic.scss \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\scss\ionicons \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\lib\ionic\scss\_action-sheet.scss \
@@ -176,4 +183,5 @@ F:\xampp\htdocs\dictionary\platforms\android\assets\www\templates\community.html
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\templates\home.html \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\templates\learningword.html \
 F:\xampp\htdocs\dictionary\platforms\android\assets\www\templates\menu.html \
+F:\xampp\htdocs\dictionary\platforms\android\assets\www\templates\wordDetail.html \
 F:\xampp\htdocs\dictionary\platforms\android\ant-build\AndroidManifest.xml \

@@ -33,7 +33,7 @@ var db = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {
-        var DB = new DBAdapter();
+        var DB = new DBAdapter(_DICT_TYPE_AV_);
         //db.receivedEvent('deviceready');
     //DB_Reader.getAllWords();
     },

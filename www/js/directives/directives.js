@@ -11,6 +11,7 @@ starterControllers.directive('saveWord', function(){
     function link(scope, element, attrs) {
         element.on('click',function(){
             console.log("save word to favourites list");
+            alert('save word');
             var db = new DBAdapter(_DICT_TYPE_PERSONAL_);
             db.saveWord(scope.selectedObject);
         });
@@ -18,5 +19,18 @@ starterControllers.directive('saveWord', function(){
     return {
         restrict: 'A',
         link: link
+    }
+});
+
+starterControllers.directive('selectWord', function(){
+    function link(scope, element, attrs) {
+        element.on('click',function(){
+            console.log('select word');
+        });
+    }
+    return {
+        restrict: 'A',
+        link: link
+        
     }
 });

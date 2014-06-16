@@ -3,19 +3,32 @@
  */
 
 
-starterControllers.controller('LearningWordCtrl', function($scope, $timeout, $location, $anchorScroll, $sce) {
+starterControllers.controller('LearningWordCtrl', function($scope, $timeout, $stateParams, LocalDataService) {
     $scope.currentPageList = 1;
     $scope.listWords = [];
+    $scope.selectedObject = {};
+    $scope.nextObject = {};
     $scope.getListWords = function(){
-        var db = new DBAdapter(_DICT_TYPE_PERSONAL_);
-        db.getFavList().done(function(result){
-            for(var i = 0; i < result.rows.length; i++ ){
-                $scope.listWords.push(result.rows.item(i));
-            }
-        });
-        $timeout(function(){
+        LocalDataService.getFavList().done(function(listWords){
+            $scope.listWords = listWords;
             $scope.$apply();
-        },_TIME_OUT_);
+        });
+       
         
+    }
+    $scope.selectWord = function(wordId){
+        LocalDataService.getCurrentAndNextWord(wordId, _DICT_TYPE_PERSONAL_).done(function(wordsSelected){
+            $scope.selectedObject = wordsSelected[0];
+            if(wordsSelected.length == 2){
+                $scope.nextObject = wordsSelected[1];
+            }else{
+                $scope.nextObject = null;
+            }
+            $scope.$apply();
+        });
+    }
+    $scope.hideBackButton = true;
+    if($stateParams.wordId !== null){
+        $scope.selectWord($stateParams.wordId);
     }
 });

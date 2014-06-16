@@ -1,11 +1,11 @@
-<ion-view class="learning-word" title="Learning words" ng-controller="LearningWordCtrl" data-ng-init="getListWords()">
+<ion-view class="learning-word" title="Learning words" data-ng-init="getListWords()" hide-back-button="{{hideBackButton}}">
   <ion-nav-buttons side="left">
-    <button menu-toggle="left"class="button button-icon icon ion-navicon menu-button"></button>
+    <button menu-toggle="left" class="button button-icon icon ion-navicon menu-button"></button>
   </ion-nav-buttons>
   <ion-content class="main-body has-header">
      <!--List words-->
             <div class="list search-result">
-                <a ng-class="{item: 1==1, 'item-icon-right': 1==1, 'item-even': $index%2==0}" href="#/app/wordDetail" ng-repeat="res in listWords"> 
+                <a ng-class="{item: 1==1, 'item-icon-right': 1==1, 'item-even': $index%2==0}" href="#/app/wordDetail/{{res.id}}" ng-repeat="res in listWords"> 
                     <span>
                         {{res.title}}
                     </span>

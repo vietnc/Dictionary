@@ -1,4 +1,20 @@
 /* Empty. Add your own CSS if you like */
+.back-button{
+    color: #ddd;
+}
+.input-bottom{
+    height: 6px;
+    background: #000;
+    margin-right: 10px;
+    right: 0;
+    left: 50px;
+    top: 40px;
+    position: absolute;
+    z-index: 10000;
+    border: 1px solid #000;
+    border-top: none;
+    background: transparent;
+}
 .sub-nav .list{
     background: transparent;
 }
@@ -8,10 +24,10 @@
     height: 40px;
     font-size: 14px;
     text-indent: 25px;
-    line-height: 8px;
 }
 .sub-nav .item:first-child{
-    border-bottom: 1px solid #ddd;
+    border-bottom: 2px solid #ddd;
+    border-top: 1px solid #ddd;
 }
 .bar.bar-stable{
     border-color: #ddd;
@@ -184,10 +200,10 @@ a.load-more-result{
 .label-search-dict{
     border-radius: 5px;
     border: none !important;
-    border-bottom: 1px solid #70DFF5 !important;
+    /*border-bottom: 1px solid #70DFF5 !important;*/
 }
 .label-search-dict i{
-    color: #70DFF5;
+    color: #000;
 }
 .speech{
     color: #aaa;
@@ -203,4 +219,33 @@ a.load-more-result{
 }
 .search-result-box .item i{
     right: -10px;
+}
+.search-result-box .item:first-child i:last-child{
+    float: right;
+    margin-top: 3px;
+    color: #aaa;
+    cursor: pointer;
+}
+a.item-even{
+    background: #f9f9f9;
+}
+.learning-word .main-body{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.learning-word .search-result .item{
+    padding-left: 5px;
+}
+.community .main-body{
+}
+.community .content{
+    background: #f9f9f9;
+    height: 100%;
+    width: 100%;
+}
+.learning-word .search-result i{
+    color: #ddd;
+}
+.learning-word .search-result .item{
+    border-bottom: none;
 }

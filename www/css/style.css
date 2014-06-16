@@ -1,14 +1,16 @@
 /* Empty. Add your own CSS if you like */
+.back-button{
+    color: #ddd;
+}
 .input-bottom{
     height: 6px;
-    background: #000;
     margin-right: 10px;
     right: 0;
     left: 50px;
     top: 40px;
     position: absolute;
     z-index: 10000;
-    border: 1px solid #70DFF5;
+    border: 1px solid #56C5FF;
     border-top: none;
     background: transparent;
 }
@@ -200,7 +202,7 @@ a.load-more-result{
     /*border-bottom: 1px solid #70DFF5 !important;*/
 }
 .label-search-dict i{
-    color: #70DFF5;
+    color: #56C5FF;
 }
 .speech{
     color: #aaa;
@@ -239,4 +241,10 @@ a.item-even{
     background: #f9f9f9;
     height: 100%;
     width: 100%;
+}
+.learning-word .search-result i{
+    color: #ddd;
+}
+.learning-word .search-result .item{
+    border-bottom: none;
 }

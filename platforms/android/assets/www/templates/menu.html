@@ -1,8 +1,7 @@
 <ion-side-menus>
-
     <ion-pane ion-side-menu-content>
         <ion-nav-bar class="bar-stable nav-title-slide-ios7">
-            <ion-nav-back-button class="button-clear"><i class="icon ion-chevron-left"></i> Back</ion-nav-back-button>
+            <ion-nav-back-button class="button-clear" ng-show="canGoBack"><i class="icon ion-ios7-arrow-left"></i></ion-nav-back-button>
         </ion-nav-bar>
         <ion-nav-view name="menuContent" animation="slide-left-right"></ion-nav-view>
     </ion-pane>
@@ -12,53 +11,52 @@
         <ion-content>
             <ion-list>
                 <ion-item nav-clear menu-close href="#/app/home">
-                    <span class="ion-home"></span>&nbsp;
+                    <span class="ion-home"></span>
                     Dictionary
                 </ion-item>
                 <ion-list class="sub-nav">
-                    <ion-item >
+                    <ion-item nav-clear menu-close href="javascript: void(0)">
                         <span>Select dictionary</span>
                     </ion-item>
-                    <ion-item >
+                    <ion-item nav-clear menu-close href="javascript: void(0)">
                         <span>Download dictionary</span>
                     </ion-item>
                 </ion-list>
 
-                <ion-item nav-clear menu-close href="#/app/learningword">
-                    <span class="ion-ios7-heart-outline"></span>&nbsp;
-
+                <ion-item nav-clear href="javascript: void(0)">
+                    <span class="ion-ios7-heart-outline"></span>
                     Learning words
                 </ion-item>
                   <ion-list class="sub-nav">
-                    <ion-item >
+                    <ion-item nav-clear menu-close href="#/app/learningword">
                         <span>List</span>
                     </ion-item>
-                    <ion-item >
+                    <ion-item nav-clear menu-close href="javascript: void(0)">
                         <span>Trends</span>
                     </ion-item>
                 </ion-list>
                 <ion-item nav-clear menu-close href="#/app/community">
-                    <span class="ion-ios7-chatboxes-outline"></span>&nbsp;
+                    <span class="ion-ios7-chatboxes-outline"></span>
 
                     Community
                 </ion-item>
                   <ion-list class="sub-nav">
-                    <ion-item >
+                    <ion-item nav-clear menu-close href="javascript: void(0)">
                         <span>Select your country</span>
                     </ion-item>
-                    <ion-item >
+                    <ion-item nav-clear menu-close href="javascript: void(0)">
                         <span>Your QA</span>
                     </ion-item>
                 </ion-list>
                 <ion-item nav-clear menu-close href="#/app/about">
-                    <span class="ion-person-stalker"></span>&nbsp;
+                    <span class="ion-person-stalker"></span>
                     About
                 </ion-item>
                  <ion-list class="sub-nav">
-                    <ion-item >
+                    <ion-item nav-clear menu-close href="javascript: void(0)">
                         <span>Product</span>
                     </ion-item>
-                    <ion-item >
+                    <ion-item nav-clear menu-close href="javascript: void(0)">
                         <span>Contact us</span>
                     </ion-item>
                 </ion-list>

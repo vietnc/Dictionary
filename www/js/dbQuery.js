@@ -10,11 +10,8 @@ var DBAdapter = function(dbType) {
     var construct = function(that, dbType) {
         if (typeof  dbType === 'undefined' || dbType === '' || dbType === null 
             || typeof db_config[dbType] === 'undefined' || db_config[dbType] === null) {
-            console.log('db type ' + dbType + "===" + db_config[dbType]);
-
             dbType = that.dbType;
         }
-        console.log(dbType);
         var dbName = db_config[dbType];
         that.dbType = dbType;
         if (navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry)/)
@@ -68,7 +65,11 @@ DBAdapter.prototype.query = function(sql) {
 * Get next word and previous word
 */
 DBAdapter.prototype.getNextWord = function(currentId){
-    var sql = "SELECT id, title, content, speech FROM words WHERE id >= '" + currentId + "' LIMIT 2";
+    var idCond = "id >= '" + currentId + "' ORDER BY id ASC";
+    if(this.dbType === _DICT_TYPE_PERSONAL_){
+        idCond = "id <= '" + currentId + "' ORDER BY id DESC";
+    }
+    var sql = "SELECT id, title, content, speech FROM words WHERE " + idCond + " LIMIT 2";
     var result = this.query(sql);
     return result;
 }
