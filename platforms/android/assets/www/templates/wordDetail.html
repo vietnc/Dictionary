@@ -1,0 +1,23 @@
+<ion-view title="{{selectedObject.title}}">
+  <ion-content class="main-body has-header">
+    <!--Selected word-->
+            <div class="list card search-result-box" id="word_selected">
+                <div class="item">
+                    <i class="icon ion-ios7-volume-high"></i>
+                    <span class="bold-span">{{selectedObject.title}}</span>  
+                    <span class="speech" ng-bind-html="selectedObject.speech"></span>
+                </div>
+                <div class="item item-body">
+                    <ion-scroll class="word-content">
+                        <div ng-bind-html="selectedObject.content"></div>
+                    </ion-scroll>
+                </div>
+
+                <div class="item next-word-item" ng-click="selectWord(nextObject.id)" ng-show="nextObject">
+                    <div class="next-word-link item-icon-right" href="javascript: void(0)">{{nextObject.title}}
+                        <i class="icon ion-ios7-arrow-right"></i>
+                    </div>  
+                </div>
+            </div> 
+  </ion-content>
+</ion-view>
