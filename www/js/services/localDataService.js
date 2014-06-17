@@ -11,9 +11,12 @@ starterControllers.factory('LocalDataService',function(){
         var d = $.Deferred();
         var db = new DBAdapter(_DICT_TYPE_PERSONAL_);
         db.getFavList().done(function(result){
-            for(var i = 0; i < result.rows.length; i++ ){
-                listWords.push(result.rows.item(i));
+            if(typeof result.rows !== 'undefined'){
+                for(var i = 0; i < result.rows.length; i++ ){
+                    listWords.push(result.rows.item(i));
+                }
             }
+           
             d.resolve(listWords);
         });
         return d.promise();

@@ -47,16 +47,15 @@ DBAdapter.prototype.query = function(sql) {
             tx.executeSql(sql, [], function(tx, results) {
                 d.resolve(results);
             }, function(error) {
-                alert(error);
+                console.log(error);
                 d.resolve(false);
             });
         }, function(error) {
-            alert(error);
-
+            console.log(error);
             d.resolve(false);
         });
     } catch (error) {
-        alert(error);
+        console.log(error);
         d.resolve(false);
     }
     return d.promise();
@@ -91,7 +90,7 @@ DBAdapter.prototype.getPagination = function(currentPage, numItemsPerPage){
  */
 DBAdapter.prototype.search = function(keyword, currentPage, numItemsPerPage) {
     var limit = this.getPagination(currentPage, numItemsPerPage);
-    var sql = "SELECT id, title, content, speech, voice, meta FROM words WHERE title like '" + keyword + "%' ORDER by title ASC " + limit;
+    var sql = "SELECT id, title, content, speech, voice, meta FROM words WHERE title like '" + this.addSlashes(keyword) + "%' ORDER by title ASC " + limit;
     var result = this.query(sql);
     return result;
 };
@@ -99,7 +98,7 @@ DBAdapter.prototype.search = function(keyword, currentPage, numItemsPerPage) {
  * Get favorist list
  */
 DBAdapter.prototype.getFavList = function(){
-    var sql = "SELECT id, title, content, speech, voice, meta FROM words ORDER BY id DESC";
+    var sql = "SELECT id, word_id, title, content, speech, voice, meta FROM words ORDER BY id DESC";
     var result = this.query(sql);
     return result;
 }
@@ -206,7 +205,9 @@ DBAdapter.prototype.initPersonalDictDB = function(){
     console.log('Init personal database!');
     // open personal db
     var personalDB =  window.openDatabase(db_config[_DICT_TYPE_PERSONAL_], '1.0', db_config[_DICT_TYPE_PERSONAL_], _MAX_SIZE_);
-   
+    personalDB.transaction(function(tx) {
+        tx.executeSql("DROP TABLE IF EXISTS words");
+    });
     personalDB.transaction(function(tx) {
         tx.executeSql("CREATE TABLE IF NOT EXISTS words(\n\
                     id INTEGER PRIMARY KEY AUTOINCREMENT,\n\
@@ -222,16 +223,24 @@ DBAdapter.prototype.openPersonalDB = function(){
     return window.openDatabase(db_config[_DICT_TYPE_PERSONAL_], '1.0', db_config[_DICT_TYPE_PERSONAL_], _MAX_SIZE_);
 }
 DBAdapter.prototype.saveWord = function(word){
-    console.log(this.dbType);
-    if(this.dbType === _DICT_TYPE_PERSONAL_){
+    if(this.dbType == _DICT_TYPE_PERSONAL_){
         var values = "'" + word.id + "', '" 
-        + word.title + "', '" 
-        + word.content + "', '" 
-        + word.speech + "', '" 
-        + word.voice + "', '" 
-        + word.meta + "'";
+        + this.addSlashes(word.title) + "', '" 
+        + this.addSlashes(word.content) + "', '" 
+        + this.addSlashes(word.speech) + "', '"
+        + this.addSlashes(word.voice) + "', '"
+        + this.addSlashes(word.meta) + "'";
         var sql = "INSERT INTO words(word_id, title, content, speech, voice, meta) VALUES(" + values + ")";
         return this.query(sql);
     }
     return true;
+}
+DBAdapter.prototype.addSlashes = function(str){
+    if(typeof str !== 'undefined' && str !== 'undefined' && str !== null && str !== ''){
+        str+='';
+        str = str.replace(/\'/g, "''");
+    }else{
+        str = '';
+    }
+    return str + '';
 }

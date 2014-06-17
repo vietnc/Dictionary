@@ -4,7 +4,7 @@
  */
 
 
-starterControllers.controller('DictHomeCtrl', function($scope,$rootScope, $timeout, $location, $anchorScroll, $sce, LocalDataService, $ionicPlatform) {
+starterControllers.controller('DictHomeCtrl', function($scope, $timeout, $location, $anchorScroll, $sce, LocalDataService, $ionicPlatform) {
     $scope.hideBackButton = true;
     $scope.wordSelected = false;
     $scope.resultsCollection = [];
@@ -13,6 +13,8 @@ starterControllers.controller('DictHomeCtrl', function($scope,$rootScope, $timeo
     $scope.isCharFilter = false;
     $scope.typeSearch = TYPE_SEARCH;
     $scope.selectedObject = null;
+    
+    $scope.isFavWord = 0;
     /**
     * Select word
     */
@@ -30,10 +32,16 @@ starterControllers.controller('DictHomeCtrl', function($scope,$rootScope, $timeo
         }
         // next word
         var nextWordIndex =  wordIndex+1;
+        var wordId = $scope.selectedObject.id;
         if(nextWordIndex < lengthResults){
             $scope.nextObject = $scope.resultsCollection[wordIndex+1];
         }else{
-            $scope.selectNextWord($scope.selectedObject.id);
+            $scope.selectNextWord(wordId);
+        }
+        if(typeof $scope.listFavWords[wordId] === 'undefined'){
+            $scope.isFavWord = 0;
+        }else{
+            $scope.isFavWord = 1;
         }
         $scope.resultsCollection = [];
         $timeout(function() {
@@ -52,11 +60,18 @@ starterControllers.controller('DictHomeCtrl', function($scope,$rootScope, $timeo
      * Select next word
      */
     $scope.selectNextWord = function(wordId){
+        $scope.isFavWord = 0;
         LocalDataService.getCurrentAndNextWord(wordId, _DICT_TYPE_AV_).done(function(words){
-             $scope.selectedObject = words[0];
+            $scope.selectedObject = words[0];
             if(words.length === 2){
                 $scope.nextObject = words[1];
             }
+            if(typeof $scope.listFavWords[wordId] === 'undefined'){
+                $scope.isFavWord = 0;
+            }else{
+                $scope.isFavWord = 1;
+            }
+            console.log('is fav ' + $scope.isFavWord);
             $scope.$apply();
         });
        
@@ -84,19 +99,17 @@ starterControllers.controller('DictHomeCtrl', function($scope,$rootScope, $timeo
             $scope.wordSelected = false;
             var db = new DBAdapter();
             if($scope.keyword !== '' && $scope.keyword.length >= 1){
-                $.when(db.search($scope.keyword, $scope.currentPage, MAX_NUMBER_WORDS_SEARCH)).then(function(result) {
+                db.search($scope.keyword, $scope.currentPage, MAX_NUMBER_WORDS_SEARCH).done(function(result) {
                     var resultLength = result.rows.length;
-                    var collection = [];
                     for (var i = 0; i < resultLength; i++) {
                         var row = result.rows.item(i);
-                        collection.push(row);
+                        $scope.resultsCollection.push(row);
                     }
                     if(resultLength < MAX_NUMBER_WORDS_SEARCH){
                         $scope.hasNextPage = false;
                     }else{
                         $scope.hasNextPage = true;
                     }
-                    $scope.resultsCollection = collection;
                     $scope.$apply();
                 });
        
@@ -105,13 +118,17 @@ starterControllers.controller('DictHomeCtrl', function($scope,$rootScope, $timeo
         });
       
     }
-    $timeout(function(){
-        $scope.$apply();
-    },200);
     $scope.characters = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','X','Y','Z','W'];
     $ionicPlatform.ready(function() {
         // Platform stuff here.
-        $scope.listFavWords = LocalDataService.getFavList();
+        LocalDataService.getFavList().done(function(listWords){
+            var list = {};
+            for(var i = 0; i < listWords.length; i++){
+                var id = listWords[i].word_id;
+                list[id] = listWords[i];
+            }
+            $scope.listFavWords = list;
+        });
     });
   
 })

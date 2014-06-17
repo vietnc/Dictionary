@@ -1,6 +1,6 @@
 /* Empty. Add your own CSS if you like */
 .back-button{
-    color: #ddd;
+    color: #56C5FF;
 }
 .input-bottom{
     height: 6px;
@@ -13,6 +13,9 @@
     border: 1px solid #56C5FF;
     border-top: none;
     background: transparent;
+}
+.is-fav-word{
+    color:#56C5FF !important; 
 }
 .sub-nav .list{
     background: transparent;
@@ -224,6 +227,8 @@ a.load-more-result{
     margin-top: 3px;
     color: #aaa;
     cursor: pointer;
+    width: 40px;
+    text-align: center;
 }
 a.item-even{
     background: #f9f9f9;
@@ -247,4 +252,7 @@ a.item-even{
 }
 .learning-word .search-result .item{
     border-bottom: none;
+}
+.learning-word .short-content{
+    font-style: normal;
 }
