@@ -146,7 +146,7 @@ a.load-more-result{
     background: #f2f2f2!important;
     width: 35px;
     float: left;
-    position: relative;
+    position: absolute;
     display: inline-block;
     color: #ddd;
     border: none;
@@ -163,10 +163,10 @@ a.load-more-result{
     background: #f2f2f2;
 }
 .right-content{
-    position: absolute;
+    position: relative;
     width: auto;
     left: 50px;
-    right: 0px;
+    margin-right: 50px;
 }
 .search-result-box.right-content{
     left: 40px;

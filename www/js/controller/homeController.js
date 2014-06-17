@@ -81,42 +81,41 @@ starterControllers.controller('DictHomeCtrl', function($scope, $timeout, $locati
     * Search dictionary
     */
     $scope.searchDict = function(str, pageNum, typeSearch){
-        $scope.$evalAsync(function(){
-            if(typeof typeSearch === 'undefined' || typeSearch === TYPE_SEARCH){
-                // type search on search box
-                $scope.typeSearch = TYPE_SEARCH;
-            }else{
-                // type search by filter charater
-                $scope.typeSearch = TYPE_FILTER_CHAR;
-                $scope.searchStr = null;
-            }
-            $scope.keyword = str;
-            if(pageNum <= 1){
-                $scope.resultsCollection = []; 
-                $scope.currentPage = 1;
-            }
-            $scope.currentPage = pageNum;
-            $scope.wordSelected = false;
-            var db = new DBAdapter();
-            if($scope.keyword !== '' && $scope.keyword.length >= 1){
-                db.search($scope.keyword, $scope.currentPage, MAX_NUMBER_WORDS_SEARCH).done(function(result) {
-                    var resultLength = result.rows.length;
-                    for (var i = 0; i < resultLength; i++) {
-                        var row = result.rows.item(i);
-                        $scope.resultsCollection.push(row);
-                    }
-                    if(resultLength < MAX_NUMBER_WORDS_SEARCH){
-                        $scope.hasNextPage = false;
-                    }else{
-                        $scope.hasNextPage = true;
-                    }
-                    $scope.$apply();
-                });
+        if(typeof typeSearch === 'undefined' || typeSearch === TYPE_SEARCH){
+            // type search on search box
+            $scope.typeSearch = TYPE_SEARCH;
+        }else{
+            // type search by filter charater
+            $scope.typeSearch = TYPE_FILTER_CHAR;
+            $scope.searchStr = null;
+        }
+        $scope.keyword = str;
+        if(pageNum <= 1){
+            $scope.resultsCollection = []; 
+            $scope.currentPage = 1;
+        }
+        $scope.currentPage = pageNum;
+        $scope.wordSelected = false;
+        var db = new DBAdapter();
+        if($scope.keyword !== '' && $scope.keyword.length >= 1){
+            db.search($scope.keyword, $scope.currentPage, MAX_NUMBER_WORDS_SEARCH).done(function(result) {
+                var resultLength = result.rows.length;
+                for (var i = 0; i < resultLength; i++) {
+                    var row = result.rows.item(i);
+                    $scope.resultsCollection.push(row);
+                }
+                if(resultLength < MAX_NUMBER_WORDS_SEARCH){
+                    $scope.hasNextPage = false;
+                }else{
+                    $scope.hasNextPage = true;
+                }
+                $scope.$apply();
+            });
        
-            }
-            db = null;
-        });
-      
+        }else{
+            $scope.hasNextPage = false;
+        }
+        db = null;
     }
     $scope.characters = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','X','Y','Z','W'];
     $ionicPlatform.ready(function() {
