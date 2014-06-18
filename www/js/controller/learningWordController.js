@@ -16,6 +16,7 @@ starterControllers.controller('LearningWordCtrl', function($scope, $timeout, $st
        
         
     }
+    
     $scope.selectWord = function(wordId){
         LocalDataService.getCurrentAndNextWord(wordId, _DICT_TYPE_PERSONAL_).done(function(wordsSelected){
             $scope.selectedObject = wordsSelected[0];
