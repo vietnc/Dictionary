@@ -4,6 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
+
 angular.module('starter', ['ionic', 'starter.controllers'])
 
     .run(function($ionicPlatform) {
@@ -12,6 +13,11 @@ angular.module('starter', ['ionic', 'starter.controllers'])
                 // org.apache.cordova.statusbar required
                 StatusBar.styleDefault();
             }
+            //------------------------------------------------------------------
+            /**
+             * Init data
+             */
+            var DB = new DBAdapter(_DICT_TYPE_AV_);
         });
     })
 
@@ -95,3 +101,47 @@ angular.module('starter', ['ionic', 'starter.controllers'])
         // if none of the above states are matched, use this as the fallback
         $urlRouterProvider.otherwise('/app/home');
     });
+ionic.Platform.ready(function(){
+    /**
+             * Admob
+             */
+    //------------------------------------------------------------------
+    try {
+        var _adMob = window.plugins.AdMob;
+        // more callback to handle Ad events
+        document.addEventListener('onReceiveAd', function(){
+            _adMob.showAd(true);
+        });
+        document.addEventListener('onFailedToReceiveAd', function(data){
+            _adMob.showAd(false);
+        });
+       
+        var _dummySuccessCallback = function() {
+        //alert('_dummySuccessCallback');
+        //_adMob.showAd(true);
+        };
+        var _dummyErrorCallback = function() {
+            alert('_dummyErrorCallback');
+        //_adMob.showAd(false);
+        };
+        _adMob.createBannerView(
+        {
+            'publisherId': AD_UNIT_ID, 
+            'adSize': _adMob.AD_SIZE.BANNER, 
+            'bannerAtTop': false
+        }
+        , function() {
+            //alert('Ad Banner Created');
+            _adMob.requestAd({
+                'isTesting': true
+            }, _dummySuccessCallback, _dummyErrorCallback);
+        }
+        , function() {
+            alert('[!!!!!] Unable To Create Ad Banner');
+        }
+        );
+    }
+    catch(e){
+        alert('Missing Admob Plugin (Cordova):', e);
+    }
+});

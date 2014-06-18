@@ -20,14 +20,15 @@
     <script src="lib/ionic/js/angular-ui/angular-ui-router.js"></script>
     <!-- your app's js -->
     <script src="js/app.js"></script>
-    <script src="js/controllers.js"></script>
-    <script src="js/services/localDataService.js"></script>
+    <script src="js/controllers/appController.js"></script>
 
+    <!--<script src="js/controllers.js"></script>-->
+    <script src="js/services/localDataService.js"></script>
     <!-- for home screen-->
 
-    <script src="js/controller/homeController.js"></script>
+    <script src="js/controllers/homeController.js"></script>
     <!--for learning word screen-->
-    <script src="js/controller/learningWordController.js"></script>
+    <script src="js/controllers/learningWordController.js"></script>
 
     <script src="js/directives/directives.js"></script>
 
@@ -37,7 +38,6 @@
     <script src="SQLitePlugin.js"></script>
     <script src="js/common.js"></script>
     <script src="js/dbQuery.js"></script>
-    <script src="js/init.js"></script>
 
     <script type="text/javascript">
         var url = location.href.split('#');
@@ -45,15 +45,6 @@
         var url_parts = url.split('/');
         delete url_parts[url_parts.length - 1];
         window.ROOT_URL = url_parts.join('/');
-            
-        $(document).ready(function(){
-            var DictData = null;
-            if (navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry)/)) {
-                db.initialize(); 
-            } else {                    
-                DictData = new DBAdapter(); 
-            }
-        });
     </script>
 </body>
 </html>

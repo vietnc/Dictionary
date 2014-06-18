@@ -27,8 +27,10 @@ starterControllers.factory('LocalDataService',function(){
         var db = new DBAdapter(DBType);
         var d = $.Deferred();
         db.getNextWord(wordId).done(function(result){
-            for(var i = 0; i < result.rows.length; i++ ){
+            if(typeof result.rows !== 'undefined'){
+                 for(var i = 0; i < result.rows.length; i++ ){
                 words.push(result.rows.item(i));
+            }
             }
             d.resolve(words);
         });

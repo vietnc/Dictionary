@@ -31,4 +31,4 @@ F:\xampp\htdocs\dictionary\platforms\android\ant-build\classes\org\pgsqlite\SQLi
 F:\xampp\htdocs\dictionary\platforms\android\ant-build\classes\org\pgsqlite\SQLitePlugin$2.class \
 F:\xampp\htdocs\dictionary\platforms\android\ant-build\classes\org\pgsqlite\SQLitePlugin.class \
 F:\xampp\htdocs\dictionary\platforms\android\ant-build\dexedLibs\classes-300b6b297bbd6205a53c407af7ed98e5.jar \
-F:\xampp\htdocs\dictionary\platforms\android\ant-build\dexedLibs\GoogleAdMobAdsSdk-6.4.1-37e41bf832eb35871e9def10572e5b25.jar \
+F:\xampp\htdocs\dictionary\platforms\android\ant-build\dexedLibs\google-play-services-d2e8ee5962668d1917cd192ed715381c.jar \

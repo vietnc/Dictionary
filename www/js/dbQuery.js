@@ -41,21 +41,22 @@ var DBAdapter = function(dbType) {
  */
 DBAdapter.prototype.query = function(sql) {
     console.log('EXECUTE: '  + sql);
+   // var d = $q.defer();
     var d = $.Deferred();
     try {
         this.db.transaction(function(tx) {
             tx.executeSql(sql, [], function(tx, results) {
                 d.resolve(results);
             }, function(error) {
-                console.log(error);
+                console.debug("exectute sql error " + sql);
                 d.resolve(false);
             });
         }, function(error) {
-            console.log(error);
+            console.debug("transaction error");
             d.resolve(false);
         });
     } catch (error) {
-        console.log(error);
+        console.debug("exception error query");
         d.resolve(false);
     }
     return d.promise();

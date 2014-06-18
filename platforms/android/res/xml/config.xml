@@ -4,8 +4,8 @@
     <feature name="App">
         <param name="android-package" value="org.apache.cordova.App" />
     </feature>
-    <feature name="AdMobPlugin">
-        <param name="android-package" value="com.google.cordova.plugin.AdMobPlugin" />
+    <feature name="AdMob">
+        <param name="android-package" value="com.rjfun.cordova.plugin.AdMob" />
     </feature>
     <name>Dictionary</name>
     <description>
