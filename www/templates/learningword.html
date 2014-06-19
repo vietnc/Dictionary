@@ -5,7 +5,7 @@
   <ion-content class="main-body has-header">
      <!--List words-->
             <div class="list search-result">
-                <a ng-class="{item: 1==1, 'item-icon-right': 1==1, 'item-even': $index%2==0}" href="#/app/wordDetail/{{res.id}}" ng-repeat="res in listWords"> 
+                <a hold-fav-word="onFavHold(res)" ng-class="{item: 1==1, 'item-icon-right': 1==1, 'item-even': $index%2==0}" href="#/app/wordDetail/{{res.id}}" ng-repeat="res in listWords"> 
                     <span>
                         {{res.title}}
                     </span>

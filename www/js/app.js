@@ -18,6 +18,48 @@ angular.module('starter', ['ionic', 'starter.controllers'])
              * Init data
              */
             var DB = new DBAdapter(_DICT_TYPE_AV_);
+            /**
+             * Admob
+             */
+            //------------------------------------------------------------------
+            try {
+                var _adMob = window.plugins.AdMob;
+                // more callback to handle Ad events
+                document.addEventListener('onReceiveAd', function(){
+                    _adMob.showAd(false);
+                });
+                document.addEventListener('onFailedToReceiveAd', function(data){
+                    _adMob.showAd(false);
+                });
+       
+                var _dummySuccessCallback = function() {
+                    _adMob.showAd(false);
+                //alert('_dummySuccessCallback');
+                };
+                var _dummyErrorCallback = function() {
+                    alert('_dummyErrorCallback');
+                //_adMob.showAd(false);
+                };
+                _adMob.createBannerView(
+                {
+                    'publisherId': AD_UNIT_ID, 
+                    'adSize': _adMob.AD_SIZE.BANNER, 
+                    'bannerAtTop': false
+                }
+                , function() {
+                    //alert('Ad Banner Created');
+                    _adMob.requestAd({
+                        'isTesting': true
+                    }, _dummySuccessCallback, _dummyErrorCallback);
+                }
+                , function() {
+                    console.debug('[!!!!!] Unable To Create Ad Banner');
+                }
+                );
+            }
+            catch(e){
+                console.debug('Missing Admob Plugin (Cordova):', e);
+            }
         });
     })
 
@@ -102,46 +144,5 @@ angular.module('starter', ['ionic', 'starter.controllers'])
         $urlRouterProvider.otherwise('/app/home');
     });
 ionic.Platform.ready(function(){
-    /**
-             * Admob
-             */
-    //------------------------------------------------------------------
-    try {
-        var _adMob = window.plugins.AdMob;
-        // more callback to handle Ad events
-        document.addEventListener('onReceiveAd', function(){
-            _adMob.showAd(true);
-        });
-        document.addEventListener('onFailedToReceiveAd', function(data){
-            _adMob.showAd(false);
-        });
-       
-        var _dummySuccessCallback = function() {
-        //alert('_dummySuccessCallback');
-        //_adMob.showAd(true);
-        };
-        var _dummyErrorCallback = function() {
-            alert('_dummyErrorCallback');
-        //_adMob.showAd(false);
-        };
-        _adMob.createBannerView(
-        {
-            'publisherId': AD_UNIT_ID, 
-            'adSize': _adMob.AD_SIZE.BANNER, 
-            'bannerAtTop': false
-        }
-        , function() {
-            //alert('Ad Banner Created');
-            _adMob.requestAd({
-                'isTesting': true
-            }, _dummySuccessCallback, _dummyErrorCallback);
-        }
-        , function() {
-            alert('[!!!!!] Unable To Create Ad Banner');
-        }
-        );
-    }
-    catch(e){
-        alert('Missing Admob Plugin (Cordova):', e);
-    }
-});
+    
+    });

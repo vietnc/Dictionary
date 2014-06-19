@@ -2,8 +2,21 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
+// Add this directive where you keep your directives
 
-
+starterControllers.directive('holdFavWord', function($ionicGesture){
+    return {
+        restrict: 'A',
+        link: function($scope, $element, $attr) {
+            $ionicGesture.on('hold', function(e) {
+                $scope.$apply(function() {
+                    $scope.$eval($attr.holdFavWord);
+                });
+            }, $element);
+        }
+    }
+    
+});
 /**
  * Save word to favorites list
  */

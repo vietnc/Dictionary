@@ -5,6 +5,15 @@
 
 
 starterControllers.factory('LocalDataService',function(){
+    function removeFavWord(wordId){
+        var d = $.Deferred();
+        var db = new DBAdapter(_DICT_TYPE_PERSONAL_);
+        db.removeFavWord(wordId).done(function(result){
+            return d.resolve(true);
+        });
+        return d.promise();
+        
+    }
     // get favorist words list
     function getFavList(){
         var listWords = [];
@@ -28,9 +37,9 @@ starterControllers.factory('LocalDataService',function(){
         var d = $.Deferred();
         db.getNextWord(wordId).done(function(result){
             if(typeof result.rows !== 'undefined'){
-                 for(var i = 0; i < result.rows.length; i++ ){
-                words.push(result.rows.item(i));
-            }
+                for(var i = 0; i < result.rows.length; i++ ){
+                    words.push(result.rows.item(i));
+                }
             }
             d.resolve(words);
         });
@@ -38,6 +47,7 @@ starterControllers.factory('LocalDataService',function(){
     }
     return {
         getFavList: getFavList,
-        getCurrentAndNextWord: getCurrentAndNextWord
+        getCurrentAndNextWord: getCurrentAndNextWord,
+        removeFavWord: removeFavWord
     }
 });

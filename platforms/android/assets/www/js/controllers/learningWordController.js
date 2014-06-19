@@ -3,7 +3,7 @@
  */
 
 
-starterControllers.controller('LearningWordCtrl', function($scope, $timeout, $stateParams, LocalDataService) {
+starterControllers.controller('LearningWordCtrl', function($scope,$ionicPopup, $stateParams, LocalDataService) {
     $scope.currentPageList = 1;
     $scope.listWords = [];
     $scope.selectedObject = {};
@@ -32,4 +32,26 @@ starterControllers.controller('LearningWordCtrl', function($scope, $timeout, $st
     if($stateParams.wordId !== null){
         $scope.selectWord($stateParams.wordId);
     }
+    $scope.onFavHold = function(item) {
+        // Show the action sheet
+        console.debug("on fav word hold");
+        var confirmPopup = $ionicPopup.confirm({
+            title: 'Confirm',
+            template: 'Are you sure you want to remove "' + item.title + '"  from favorites list?'
+        });
+        confirmPopup.then(function(res) {
+            if(res) {
+                console.log('Deleted');
+                 $scope.removeFavWord(item);
+            }
+        });
+    };
+    $scope.removeFavWord = function(item) {
+        LocalDataService.removeFavWord(item.id).done(function(result){
+            if(result == true){
+                console.debug("Deleted success");
+                $scope.getListWords();
+            }
+        });
+    };
 });

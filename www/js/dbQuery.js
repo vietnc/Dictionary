@@ -206,9 +206,9 @@ DBAdapter.prototype.initPersonalDictDB = function(){
     console.log('Init personal database!');
     // open personal db
     var personalDB =  window.openDatabase(db_config[_DICT_TYPE_PERSONAL_], '1.0', db_config[_DICT_TYPE_PERSONAL_], _MAX_SIZE_);
-    personalDB.transaction(function(tx) {
-        tx.executeSql("DROP TABLE IF EXISTS words");
-    });
+//    personalDB.transaction(function(tx) {
+//        tx.executeSql("DROP TABLE IF EXISTS words");
+//    });
     personalDB.transaction(function(tx) {
         tx.executeSql("CREATE TABLE IF NOT EXISTS words(\n\
                     id INTEGER PRIMARY KEY AUTOINCREMENT,\n\
@@ -232,6 +232,13 @@ DBAdapter.prototype.saveWord = function(word){
         + this.addSlashes(word.voice) + "', '"
         + this.addSlashes(word.meta) + "'";
         var sql = "INSERT INTO words(word_id, title, content, speech, voice, meta) VALUES(" + values + ")";
+        return this.query(sql);
+    }
+    return true;
+}
+DBAdapter.prototype.removeFavWord = function(id){
+    if(this.dbType == _DICT_TYPE_PERSONAL_){
+        var sql = "DELETE FROM words WHERE id = '" + id + "'";
         return this.query(sql);
     }
     return true;
