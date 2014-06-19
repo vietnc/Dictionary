@@ -20,7 +20,7 @@ starterControllers.directive('holdFavWord', function($ionicGesture){
 /**
  * Save word to favorites list
  */
-starterControllers.directive('saveWord', function(){
+starterControllers.directive('saveWord', function($ionicPopup){
     function link(scope, element, attrs) {
         scope.$watch('selectedObject',function(){
             if(scope.selectedObject !== null){
@@ -34,8 +34,13 @@ starterControllers.directive('saveWord', function(){
         element.on('click',function(){
             if(scope.isFavWord == 0){
                 var db = new DBAdapter(_DICT_TYPE_PERSONAL_);
-                alert("Saved");
-                db.saveWord(scope.selectedObject);
+                db.saveWord(scope.selectedObject).done(function(){
+                    $ionicPopup.alert({
+                        title: 'Message',
+                        template: 'Saved to favorites list' 
+                    });
+                });
+                
                 scope.listFavWords[scope.selectedObject.id] = scope.selectedObject;
                 scope.isFavWord = 1;
             }
