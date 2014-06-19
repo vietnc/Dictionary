@@ -36,7 +36,7 @@ starterControllers.controller('LearningWordCtrl', function($scope,$ionicPopup, $
         // Show the action sheet
         console.debug("on fav word hold");
         var confirmPopup = $ionicPopup.confirm({
-            title: 'Confirm',
+            title: 'Message',
             template: 'Are you sure you want to remove "' + item.title + '"  from favorites list?'
         });
         confirmPopup.then(function(res) {
