@@ -4,7 +4,7 @@
  */
 // Add this directive where you keep your directives
 
-starterControllers.directive('holdFavWord', function($ionicGesture){
+starterControllers.directive('holdFavWord', function($ionicGesture,$ionicPopup){
     return {
         restrict: 'A',
         link: function($scope, $element, $attr) {
@@ -52,19 +52,5 @@ starterControllers.directive('saveWord', function($ionicPopup){
         link: link,
         tranclude: true,
         template: '<i ng-class="{icon: 1==1, \'ion-ios7-heart-outline\': isFavWord==0, \'ion-heart\': isFavWord==1, \'is-fav-word\': isFavWord==1 }"></i>'
-    }
-});
-
-starterControllers.directive('selectWord', function(){
-    function link(scope, element, attrs) {
-        
-        element.on('click',function(){
-            console.log('select word');
-        });
-    }
-    return {
-        restrict: 'A',
-        link: link
-        
     }
 });

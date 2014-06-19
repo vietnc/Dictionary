@@ -4,15 +4,29 @@
  */
 
 
-starterControllers.factory('LocalDataService',function(){
-    function removeFavWord(wordId){
+starterControllers.factory('LocalDataService',function($ionicPopup){
+    /**
+     * Remove word 
+     */
+    function removeFavWord(item){
         var d = $.Deferred();
-        var db = new DBAdapter(_DICT_TYPE_PERSONAL_);
-        db.removeFavWord(wordId).done(function(result){
-            return d.resolve(true);
+        // Show the action sheet
+        console.debug("on fav word hold");
+        var confirmPopup = $ionicPopup.confirm({
+            title: 'Message',
+            template: 'Are you sure you want to remove "' + item.title + '"  from favorites list?'
+        });
+        confirmPopup.then(function(res) {
+            if(res) {
+                var db = new DBAdapter(_DICT_TYPE_PERSONAL_);
+                db.removeFavWord(item.id).done(function(result){
+                    d.resolve(true);
+                });
+            }else{
+                 d.resolve(false);
+            }
         });
         return d.promise();
-        
     }
     // get favorist words list
     function getFavList(){
@@ -48,6 +62,6 @@ starterControllers.factory('LocalDataService',function(){
     return {
         getFavList: getFavList,
         getCurrentAndNextWord: getCurrentAndNextWord,
-        removeFavWord: removeFavWord
+        removeFavWord: removeFavWord      
     }
 });
