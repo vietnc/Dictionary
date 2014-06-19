@@ -128,7 +128,7 @@ starterControllers.controller('DictHomeCtrl', function($scope, $timeout, $locati
             }
             $scope.listFavWords = list;
         });
-       
+       $scope.searchDict('F',1,1);
     });
   
 })
