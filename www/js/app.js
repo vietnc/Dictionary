@@ -18,48 +18,57 @@ angular.module('starter', ['ionic', 'starter.controllers'])
              * Init data
              */
             var DB = new DBAdapter(_DICT_TYPE_AV_);
+            if (!navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry)/)
+                || typeof cordova !== 'undefined') {
+                console.debug("is Web view");
+                DB.initDBWeb();
+            }
+           
             /**
              * Admob
              */
             //------------------------------------------------------------------
-            try {
-                var _adMob = window.plugins.AdMob;
-                // more callback to handle Ad events
-                document.addEventListener('onReceiveAd', function(){
-                    _adMob.showAd(false);
-                });
-                document.addEventListener('onFailedToReceiveAd', function(data){
-                    _adMob.showAd(false);
-                });
+            if(ionic.Platform.isAndroid() && typeof window.plugins.AdMob != 'undefined' && window.plugins.AdMob != null){
+                try {
+                    var _adMob = window.plugins.AdMob;
+                    // more callback to handle Ad events
+                    document.addEventListener('onReceiveAd', function(){
+                        _adMob.showAd(false);
+                    });
+                    document.addEventListener('onFailedToReceiveAd', function(data){
+                        _adMob.showAd(false);
+                    });
        
-                var _dummySuccessCallback = function() {
-                    _adMob.showAd(false);
-                //alert('_dummySuccessCallback');
-                };
-                var _dummyErrorCallback = function() {
-                    alert('_dummyErrorCallback');
-                //_adMob.showAd(false);
-                };
-                _adMob.createBannerView(
-                {
-                    'publisherId': AD_UNIT_ID, 
-                    'adSize': _adMob.AD_SIZE.BANNER, 
-                    'bannerAtTop': false
+                    var _dummySuccessCallback = function() {
+                        _adMob.showAd(false);
+                    //alert('_dummySuccessCallback');
+                    };
+                    var _dummyErrorCallback = function() {
+                        alert('_dummyErrorCallback');
+                    //_adMob.showAd(false);
+                    };
+                    _adMob.createBannerView(
+                    {
+                        'publisherId': AD_UNIT_ID, 
+                        'adSize': _adMob.AD_SIZE.BANNER, 
+                        'bannerAtTop': false
+                    }
+                    , function() {
+                        //alert('Ad Banner Created');
+                        _adMob.requestAd({
+                            'isTesting': true
+                        }, _dummySuccessCallback, _dummyErrorCallback);
+                    }
+                    , function() {
+                        console.debug('[!!!!!] Unable To Create Ad Banner');
+                    }
+                    );
                 }
-                , function() {
-                    //alert('Ad Banner Created');
-                    _adMob.requestAd({
-                        'isTesting': true
-                    }, _dummySuccessCallback, _dummyErrorCallback);
+                catch(e){
+                    console.debug('Missing Admob Plugin (Cordova):', e);
                 }
-                , function() {
-                    console.debug('[!!!!!] Unable To Create Ad Banner');
-                }
-                );
             }
-            catch(e){
-                console.debug('Missing Admob Plugin (Cordova):', e);
-            }
+           
         });
     })
 

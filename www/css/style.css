@@ -170,6 +170,7 @@ a.load-more-result{
 }
 .search-result-box.right-content{
     left: 40px;
+    margin-top: 0px;
 
 }
 .char-list .item{

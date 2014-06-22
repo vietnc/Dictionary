@@ -21,18 +21,13 @@ var DBAdapter = function(dbType) {
                 that.db = window.sqlitePlugin.openDatabase({
                     name: dbName
                 });
-                that.checkDBExist().done(function(result) {
-                    if (result === false) {
-                    }
-                });
             } catch (error) {
-                console.log(error);
+                console.debug(error);
             }
 
         } else {
             // on web browser
             that.db = window.openDatabase(dbName, '1.0', dbName, _MAX_SIZE_);
-            that.initDBWeb();
         }
     }(this,dbType);
 }

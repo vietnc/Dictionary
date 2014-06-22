@@ -12,7 +12,6 @@ F:\xampp\htdocs\dict\platforms\android\ant-build\res\drawable-hdpi\icon.png \
 F:\xampp\htdocs\dict\platforms\android\ant-build\res\drawable-ldpi\icon.png \
 F:\xampp\htdocs\dict\platforms\android\ant-build\res\drawable-mdpi\icon.png \
 F:\xampp\htdocs\dict\platforms\android\ant-build\res\drawable-xhdpi\icon.png \
-F:\xampp\htdocs\dict\platforms\android\assets\0000000000000001.db \
 F:\xampp\htdocs\dict\platforms\android\assets\av_dict.db \
 F:\xampp\htdocs\dict\platforms\android\assets\dictionary.db \
 F:\xampp\htdocs\dict\platforms\android\assets\www \

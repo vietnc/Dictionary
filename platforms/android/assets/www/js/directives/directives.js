@@ -20,11 +20,13 @@ starterControllers.directive('holdFavWord', function($ionicGesture,$ionicPopup){
 /**
  * Save word to favorites list
  */
-starterControllers.directive('saveWord', function($ionicPopup){
+starterControllers.directive('saveWord', function($ionicPopup, LocalDataService){
     function link(scope, element, attrs) {
         scope.$watch('selectedObject',function(){
             if(scope.selectedObject !== null){
-                if(typeof scope.listFavWords[scope.selectedObject.id] !== 'undefined'){
+                if(typeof scope.listFavWords[scope.selectedObject.id] !== 'undefined' 
+                    && scope.listFavWords[scope.selectedObject.id] != null )
+                {
                     scope.isFavWord = 1;
                 }else{
                     scope.isFavWord = 0;
@@ -32,8 +34,9 @@ starterControllers.directive('saveWord', function($ionicPopup){
             }
         });
         element.on('click',function(){
+            var db = new DBAdapter(_DICT_TYPE_PERSONAL_);
             if(scope.isFavWord == 0){
-                var db = new DBAdapter(_DICT_TYPE_PERSONAL_);
+                // add to fav list
                 db.saveWord(scope.selectedObject).done(function(){
                     $ionicPopup.alert({
                         title: 'Message',
@@ -43,6 +46,11 @@ starterControllers.directive('saveWord', function($ionicPopup){
                 
                 scope.listFavWords[scope.selectedObject.id] = scope.selectedObject;
                 scope.isFavWord = 1;
+            }else{
+                // remove from fav list
+                LocalDataService.removeFavWord(scope.listFavWords[scope.selectedObject.id]);
+                scope.isFavWord = 0;
+                scope.listFavWords[scope.selectedObject.id] = null;
             }
             scope.$apply();
         });
