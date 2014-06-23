@@ -36,7 +36,7 @@ var DBAdapter = function(dbType) {
  */
 DBAdapter.prototype.query = function(sql) {
     console.log('EXECUTE: '  + sql);
-   // var d = $q.defer();
+    // var d = $q.defer();
     var d = $.Deferred();
     try {
         this.db.transaction(function(tx) {
@@ -201,9 +201,9 @@ DBAdapter.prototype.initPersonalDictDB = function(){
     console.log('Init personal database!');
     // open personal db
     var personalDB =  window.openDatabase(db_config[_DICT_TYPE_PERSONAL_], '1.0', db_config[_DICT_TYPE_PERSONAL_], _MAX_SIZE_);
-//    personalDB.transaction(function(tx) {
-//        tx.executeSql("DROP TABLE IF EXISTS words");
-//    });
+    //    personalDB.transaction(function(tx) {
+    //        tx.executeSql("DROP TABLE IF EXISTS words");
+    //    });
     personalDB.transaction(function(tx) {
         tx.executeSql("CREATE TABLE IF NOT EXISTS words(\n\
                     id INTEGER PRIMARY KEY AUTOINCREMENT,\n\
@@ -218,6 +218,9 @@ DBAdapter.prototype.initPersonalDictDB = function(){
 DBAdapter.prototype.openPersonalDB = function(){
     return window.openDatabase(db_config[_DICT_TYPE_PERSONAL_], '1.0', db_config[_DICT_TYPE_PERSONAL_], _MAX_SIZE_);
 }
+/**
+ * Save word to fav list
+ */
 DBAdapter.prototype.saveWord = function(word){
     if(this.dbType == _DICT_TYPE_PERSONAL_){
         var values = "'" + word.id + "', '" 
@@ -227,9 +230,16 @@ DBAdapter.prototype.saveWord = function(word){
         + this.addSlashes(word.voice) + "', '"
         + this.addSlashes(word.meta) + "'";
         var sql = "INSERT INTO words(word_id, title, content, speech, voice, meta) VALUES(" + values + ")";
-        return this.query(sql);
+        return this.query(sql)
     }
     return true;
+}
+DBAdapter.prototype.getLastFavWord = function(){
+    if(this.dbType == _DICT_TYPE_PERSONAL_){
+        var sql = "SELECT id, word_id, title, content, speech, voice, meta FROM words ORDER BY id DESC LIMIT 1";
+        var result = this.query(sql);
+        return result;
+    }
 }
 DBAdapter.prototype.removeFavWord = function(id){
     if(this.dbType == _DICT_TYPE_PERSONAL_){

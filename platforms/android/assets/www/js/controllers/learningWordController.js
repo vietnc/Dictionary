@@ -3,7 +3,7 @@
  */
 
 
-starterControllers.controller('LearningWordCtrl', function($scope,$ionicPlatform, $stateParams, LocalDataService) {
+starterControllers.controller('LearningWordCtrl', function($scope,$timeout, $ionicPlatform, $stateParams, LocalDataService) {
     $scope.currentPageList = 1;
     $scope.listWords = [];
     $scope.selectedObject = {};
@@ -29,7 +29,8 @@ starterControllers.controller('LearningWordCtrl', function($scope,$ionicPlatform
         });
     }
     //$scope.hideBackButton = true;
-    if($stateParams.wordId !== null){
+    if(typeof $stateParams.wordId != 'undefined' && $stateParams.wordId !== null){
+        console.debug($stateParams.wordId);
         $scope.selectWord($stateParams.wordId);
     }
     /**
@@ -46,6 +47,8 @@ starterControllers.controller('LearningWordCtrl', function($scope,$ionicPlatform
      * Init data
      */
     $ionicPlatform.ready(function() {
-       $scope.getListWords();
+        $timeout(function(){
+            $scope.getListWords();
+        },500);
     });
 });

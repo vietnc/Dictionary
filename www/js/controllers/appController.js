@@ -10,5 +10,8 @@ var starterControllers = angular.module('starter.controllers', ['ionic']);
 /**
  * appCtrl use for menu.html
  */
-starterControllers.controller('AppCtrl', function($scope) {
-        });
+starterControllers.controller('AppCtrl', function($scope, $ionicPlatform,$location) {
+    $scope.isItemActive = function(href) {
+        return $location.path().indexOf(href) > -1;
+    };
+});

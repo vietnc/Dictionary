@@ -10,7 +10,7 @@
        
         <ion-content>
             <ion-list>
-                <ion-item nav-clear menu-close href="#/app/home">
+                <ion-item nav-clear menu-close ng-class="{active: isItemActive('app/home')}" href="#/app/home">
                     <span class="ion-home"></span>
                     Dictionary
                 </ion-item>
@@ -28,14 +28,14 @@
                     Learning words
                 </ion-item>
                   <ion-list class="sub-nav">
-                    <ion-item nav-clear menu-close href="#/app/learningword">
+                    <ion-item nav-clear menu-close href="#/app/learningword" ng-class="{active: isItemActive('app/learningword')}">
                         <span>List</span>
                     </ion-item>
                     <ion-item nav-clear menu-close href="javascript: void(0)">
                         <span>Trends</span>
                     </ion-item>
                 </ion-list>
-                <ion-item nav-clear menu-close href="#/app/community">
+                <ion-item nav-clear menu-close ng-class="{active: isItemActive('app/community')}" href="#/app/community">
                     <span class="ion-ios7-chatboxes-outline"></span>
 
                     Community
@@ -48,7 +48,7 @@
                         <span>Your QA</span>
                     </ion-item>
                 </ion-list>
-                <ion-item nav-clear menu-close href="#/app/about">
+                <ion-item nav-clear menu-close href="#/app/about" ng-class="{active: isItemActive('app/about')}">
                     <span class="ion-person-stalker"></span>
                     About
                 </ion-item>

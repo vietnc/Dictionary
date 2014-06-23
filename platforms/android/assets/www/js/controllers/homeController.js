@@ -120,15 +120,18 @@ starterControllers.controller('DictHomeCtrl', function($scope, $timeout, $locati
     $scope.characters = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','X','Y','Z','W'];
     $ionicPlatform.ready(function() {
         // Platform stuff here.
-        LocalDataService.getFavList().done(function(listWords){
-            var list = {};
-            for(var i = 0; i < listWords.length; i++){
-                var id = listWords[i].word_id;
-                list[id] = listWords[i];
-            }
-            $scope.listFavWords = list;
-        });
-        $scope.searchDict('F',1,1);
+        $timeout(function(){
+            LocalDataService.getFavList().done(function(listWords){
+                var list = {};
+                for(var i = 0; i < listWords.length; i++){
+                    var id = listWords[i].word_id;
+                    list[id] = listWords[i];
+                }
+                $scope.listFavWords = list;
+            });
+            $scope.searchDict('F',1,1);
+        },500);
+      
     });
   
 })

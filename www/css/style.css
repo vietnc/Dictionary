@@ -257,3 +257,6 @@ a.item-even{
 .learning-word .short-content{
     font-style: normal;
 }
+.menu .item.active a{
+    border-right: 6px solid #56C5FF;
+}

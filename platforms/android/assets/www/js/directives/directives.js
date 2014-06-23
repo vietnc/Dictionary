@@ -26,7 +26,7 @@ starterControllers.directive('saveWord', function($ionicPopup, LocalDataService)
             if(scope.selectedObject !== null){
                 if(typeof scope.listFavWords[scope.selectedObject.id] !== 'undefined' 
                     && scope.listFavWords[scope.selectedObject.id] != null )
-                {
+                    {
                     scope.isFavWord = 1;
                 }else{
                     scope.isFavWord = 0;
@@ -37,20 +37,30 @@ starterControllers.directive('saveWord', function($ionicPopup, LocalDataService)
             var db = new DBAdapter(_DICT_TYPE_PERSONAL_);
             if(scope.isFavWord == 0){
                 // add to fav list
-                db.saveWord(scope.selectedObject).done(function(){
-                    $ionicPopup.alert({
-                        title: 'Message',
-                        template: 'Saved to favorites list' 
+                db.saveWord(scope.selectedObject).done(function(result){
+                    db.getLastFavWord().done(function(result){
+                        var word = result.rows.item(0);
+                        if(word.word_id == scope.selectedObject.id){
+                            $ionicPopup.alert({
+                                title: 'Message',
+                                template: 'Saved to favorites list' 
+                            });
+                            scope.listFavWords[scope.selectedObject.id] = word;
+                            scope.isFavWord = 1;
+                        }
                     });
+                    
+                    
                 });
-                
-                scope.listFavWords[scope.selectedObject.id] = scope.selectedObject;
-                scope.isFavWord = 1;
             }else{
                 // remove from fav list
-                LocalDataService.removeFavWord(scope.listFavWords[scope.selectedObject.id]);
-                scope.isFavWord = 0;
-                scope.listFavWords[scope.selectedObject.id] = null;
+                LocalDataService.removeFavWord(scope.listFavWords[scope.selectedObject.id]).done(function(res){
+                    if(res == true){
+                        scope.isFavWord = 0;
+                        scope.listFavWords[scope.selectedObject.id] = null;
+                    }
+                   
+                });
             }
             scope.$apply();
         });
