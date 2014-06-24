@@ -20,6 +20,7 @@ F:\xampp\htdocs\dict\platforms\android\assets\www\config.xml \
 F:\xampp\htdocs\dict\platforms\android\assets\www\cordova.js \
 F:\xampp\htdocs\dict\platforms\android\assets\www\cordova_plugins.js \
 F:\xampp\htdocs\dict\platforms\android\assets\www\css \
+F:\xampp\htdocs\dict\platforms\android\assets\www\dat.sql \
 F:\xampp\htdocs\dict\platforms\android\assets\www\fonts \
 F:\xampp\htdocs\dict\platforms\android\assets\www\icon.png \
 F:\xampp\htdocs\dict\platforms\android\assets\www\index.html \
@@ -42,7 +43,6 @@ F:\xampp\htdocs\dict\platforms\android\assets\www\js\common.js \
 F:\xampp\htdocs\dict\platforms\android\assets\www\js\controllers \
 F:\xampp\htdocs\dict\platforms\android\assets\www\js\dbQuery.js \
 F:\xampp\htdocs\dict\platforms\android\assets\www\js\directives \
-F:\xampp\htdocs\dict\platforms\android\assets\www\js\notification.js \
 F:\xampp\htdocs\dict\platforms\android\assets\www\js\services \
 F:\xampp\htdocs\dict\platforms\android\assets\www\js\controllers\appController.js \
 F:\xampp\htdocs\dict\platforms\android\assets\www\js\controllers\homeController.js \

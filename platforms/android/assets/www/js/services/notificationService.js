@@ -6,10 +6,11 @@ starterControllers.factory('NotificationService',function(LocalDataService, $loc
     function register(){
         if(typeof window.plugin != 'undefined' 
             && typeof window.plugin.notification.local != 'undefined'){
-            window.plugin.notification.local.cancelAll();
+            var notifiPlugin = window.plugin.notification.local;
+            notifiPlugin.cancelAll();
             registerFavWord();
-            window.plugin.notification.local.onclick = function(id, state, json){
-                window.plugin.notification.local.cancel(id);
+            notifiPlugin.onclick = function(id, state, json){
+                notifiPlugin.cancel(id);
                 registerFavWord();
                 $location.path('/#/app/wordDetail/' + id);
             }
@@ -26,14 +27,15 @@ starterControllers.factory('NotificationService',function(LocalDataService, $loc
     }
     function add(id, title, message, json){
         if(typeof window.plugin.notification.local != 'undefined'){
-            var now                  = new Date().getTime(),
-            _60_seconds_from_now = new Date(now + 60*1000);
+            var time = new Date();
+            time.setDate(date.getDay() + 1);
+            time.setHours(_HOUR_NOTIFICATION_,0,0,0);
             window.plugin.notification.local.add({
                 id:      id,
                 title:   title,
                 message: message,
-                repeat:  1,
-                date:    _60_seconds_from_now,
+                repeat:  _REPEAT_NOTIFICATION_,
+                date:    time,
                 autoCancel: true
             });
         }

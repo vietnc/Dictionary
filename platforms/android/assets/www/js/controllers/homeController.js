@@ -4,7 +4,7 @@
  */
 
 
-starterControllers.controller('DictHomeCtrl', function($scope, $timeout, $location, $anchorScroll, $sce, LocalDataService,NotificationService, $ionicPlatform) {
+starterControllers.controller('DictHomeCtrl', function($scope, $ionicScrollDelegate, $timeout, $sce, LocalDataService,NotificationService, $ionicPlatform) {
     $scope.hideBackButton = true;
     $scope.wordSelected = false;
     $scope.resultsCollection = [];
@@ -48,9 +48,7 @@ starterControllers.controller('DictHomeCtrl', function($scope, $timeout, $locati
             // set the location.hash to the id of
             // the element you wish to scroll to.
             $scope.$apply(function(){
-                $location.hash('top');
-                // call $anchorScroll()
-                $anchorScroll();
+                $ionicScrollDelegate.scrollTop();
             });
            
         },_TIME_OUT_);
@@ -119,6 +117,7 @@ starterControllers.controller('DictHomeCtrl', function($scope, $timeout, $locati
     }
     $scope.characters = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','X','Y','Z','W'];
     $ionicPlatform.ready(function() {
+      
         // Platform stuff here.
         $timeout(function(){
             LocalDataService.getFavList().done(function(listWords){
