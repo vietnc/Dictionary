@@ -6,6 +6,21 @@
 
 starterControllers.factory('LocalDataService',function($ionicPopup){
     /**
+     * Get random favorist word
+     */
+    function getRandomFavWord(){
+        var word = null;
+        var d = $.Deferred();
+        var db = new DBAdapter(_DICT_TYPE_PERSONAL_);
+        db.getRandomFavWord().done(function(result){
+            if(typeof result.rows !== 'undefined'){
+                word = result.rows.item(0);
+            }
+            d.resolve(word);
+        });
+        return d.promise();
+    }
+    /**
      * Remove word 
      */
     function removeFavWord(item){
@@ -23,7 +38,7 @@ starterControllers.factory('LocalDataService',function($ionicPopup){
                     d.resolve(true);
                 });
             }else{
-                 d.resolve(false);
+                d.resolve(false);
             }
         });
         return d.promise();
@@ -62,6 +77,7 @@ starterControllers.factory('LocalDataService',function($ionicPopup){
     return {
         getFavList: getFavList,
         getCurrentAndNextWord: getCurrentAndNextWord,
-        removeFavWord: removeFavWord      
+        removeFavWord: removeFavWord,
+        getRandomFavWord: getRandomFavWord
     }
 });

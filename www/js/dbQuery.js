@@ -241,6 +241,13 @@ DBAdapter.prototype.getLastFavWord = function(){
         return result;
     }
 }
+DBAdapter.prototype.getRandomFavWord = function(){
+    if(this.dbType == _DICT_TYPE_PERSONAL_){
+        var sql = "SELECT id, word_id, title, content, speech, voice, meta FROM words ORDER BY RANDOM() LIMIT 1";
+        var result = this.query(sql);
+        return result;
+    }
+}
 DBAdapter.prototype.removeFavWord = function(id){
     if(this.dbType == _DICT_TYPE_PERSONAL_){
         var sql = "DELETE FROM words WHERE id = '" + id + "'";

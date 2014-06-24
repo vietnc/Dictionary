@@ -19,8 +19,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
              */
             var DB = new DBAdapter(_DICT_TYPE_AV_);
             if (!navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry)/)
-                || typeof cordova !== 'undefined') {
-                console.debug("is Web view");
+                || typeof cordova == 'undefined') {
                 DB.initDBWeb();
             }
            

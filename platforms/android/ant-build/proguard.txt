@@ -4,6 +4,15 @@
 # view AndroidManifest.xml #generated:5
 -keep class com.phonegap.dictionary.Dictionary { <init>(...); }
 
+# view AndroidManifest.xml #generated:16
+-keep class de.appplant.cordova.plugin.localnotification.Receiver { <init>(...); }
+
+# view AndroidManifest.xml #generated:22
+-keep class de.appplant.cordova.plugin.localnotification.ReceiverActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:17
+-keep class de.appplant.cordova.plugin.localnotification.Restore { <init>(...); }
+
 # view AndroidManifest.xml #generated:11
 -keep class org.pgsqlite.SQLitePlugin { <init>(...); }
 

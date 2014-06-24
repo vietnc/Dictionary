@@ -4,7 +4,7 @@
  */
 
 
-starterControllers.controller('DictHomeCtrl', function($scope, $timeout, $location, $anchorScroll, $sce, LocalDataService, $ionicPlatform) {
+starterControllers.controller('DictHomeCtrl', function($scope, $timeout, $location, $anchorScroll, $sce, LocalDataService,NotificationService, $ionicPlatform) {
     $scope.hideBackButton = true;
     $scope.wordSelected = false;
     $scope.resultsCollection = [];
@@ -130,6 +130,7 @@ starterControllers.controller('DictHomeCtrl', function($scope, $timeout, $locati
                 $scope.listFavWords = list;
             });
             $scope.searchDict('F',1,1);
+            NotificationService.register();
         },500);
       
     });
