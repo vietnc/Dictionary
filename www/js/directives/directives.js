@@ -34,12 +34,13 @@ starterControllers.directive('saveWord', function($ionicPopup, LocalDataService)
             }
         });
         element.on('click',function(){
-            var db = new DBAdapter(_DICT_TYPE_PERSONAL_);
+            var db = new DBAdapter(_DICT_TYPE_AV_);
+
             if(scope.isFavWord == 0){
                 // add to fav list
                 db.saveWord(scope.selectedObject).done(function(result){
                     db.getLastFavWord().done(function(result){
-                        var word = result.rows.item(0);
+                        var word = result.rows[0];
                         if(word.word_id == scope.selectedObject.id){
                             $ionicPopup.alert({
                                 title: 'Message',

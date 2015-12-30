@@ -4,6 +4,9 @@
 
 
 starterControllers.controller('LearningWordCtrl', function($scope,$timeout, $ionicPlatform, $stateParams, LocalDataService) {
+    
+    $scope.tab1Url = "learn word";
+    
     $scope.currentPageList = 1;
     $scope.listWords = [];
     $scope.selectedObject = {};

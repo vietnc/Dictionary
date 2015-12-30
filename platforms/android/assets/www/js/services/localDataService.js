@@ -4,7 +4,7 @@
  */
 
 
-starterControllers.factory('LocalDataService',function($ionicPopup){
+starterControllers.factory('LocalDataService',function($ionicPopup, Word){
     /**
      * Get random favorist word
      */
@@ -51,7 +51,8 @@ starterControllers.factory('LocalDataService',function($ionicPopup){
         db.getFavList().done(function(result){
             if(typeof result.rows !== 'undefined'){
                 for(var i = 0; i < result.rows.length; i++ ){
-                    listWords.push(result.rows.item(i));
+                    var word = new Word(result.rows.item(i))
+                    listWords.push(word);
                 }
             }
            

@@ -4,6 +4,27 @@
             <ion-nav-back-button class="button-clear" ng-show="canGoBack"><i class="icon ion-ios7-arrow-left back-button"></i></ion-nav-back-button>
         </ion-nav-bar>
         <ion-nav-view name="menuContent" animation="slide-left-right"></ion-nav-view>
+        
+         
+ <ion-footer-bar class="bar-light">
+    <ion-tabs class="tabs-icon-top tabs-positive">
+
+        <ion-tab title="Home" icon="ion-home" href="#/tab/home">
+          <ion-nav-view name="home-tab"></ion-nav-view>
+        </ion-tab>
+
+        <ion-tab title="Learning" icon="ion-ios7-information" href="#/app/learningword">
+          <ion-nav-view name="learn-tab"></ion-nav-view>
+        </ion-tab>
+
+        <ion-tab title="Setting" icon="ion-ios7-world" ui-sref="#/app/setting">
+          <ion-nav-view name="setting-tab"></ion-nav-view>
+        </ion-tab>
+
+      </ion-tabs>
+
+</ion-footer-bar>
+
     </ion-pane>
 
     <ion-side-menu side="left">
@@ -14,14 +35,14 @@
                     <span class="ion-home"></span>
                     Dictionary
                 </ion-item>
-                <ion-list class="sub-nav">
+                <!--ion-list class="sub-nav">
                     <ion-item nav-clear menu-close href="javascript: void(0)">
                         <span>Select dictionary</span>
                     </ion-item>
                     <ion-item nav-clear menu-close href="javascript: void(0)">
                         <span>Download dictionary</span>
                     </ion-item>
-                </ion-list>
+                </ion-list-->
 
                 <ion-item nav-clear href="javascript: void(0)">
                     <span class="ion-ios7-heart-outline"></span>
@@ -34,6 +55,9 @@
                     <ion-item nav-clear menu-close href="javascript: void(0)">
                         <span>Trends</span>
                     </ion-item>
+                    <ion-item nav-clear menu-close href="javascript: void(0)">
+                        <span>Stats</span>
+                    </ion-item>
                 </ion-list>
                 <ion-item nav-clear menu-close ng-class="{active: isItemActive('app/community')}" href="#/app/community">
                     <span class="ion-ios7-chatboxes-outline"></span>
@@ -41,9 +65,9 @@
                     Community
                 </ion-item>
                   <ion-list class="sub-nav">
-                    <ion-item nav-clear menu-close href="javascript: void(0)">
+                    <!--ion-item nav-clear menu-close href="javascript: void(0)">
                         <span>Select your country</span>
-                    </ion-item>
+                    </ion-item-->
                     <ion-item nav-clear menu-close href="javascript: void(0)">
                         <span>Your QA</span>
                     </ion-item>
@@ -53,9 +77,6 @@
                     About
                 </ion-item>
                  <ion-list class="sub-nav">
-                    <ion-item nav-clear menu-close href="javascript: void(0)">
-                        <span>Product</span>
-                    </ion-item>
                     <ion-item nav-clear menu-close href="javascript: void(0)">
                         <span>Contact us</span>
                     </ion-item>

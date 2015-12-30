@@ -1,10 +1,10 @@
 /*
  *  Define constant for database
  */
-var _DICT_TYPE_AV_ = 'av';
-var _DICT_TYPE_PERSONAL_ = 'personal';
+var _DICT_TYPE_AV_ = 'av_dict';
+var _DICT_TYPE_PERSONAL_ = 'av_dict';
 var _DB_AV_ = 'av_dict';
-var _DB_PERSONAL_ = 'dictionary';
+var _DB_PERSONAL_ = 'av_dict'; //dictionary
 var _MAX_SIZE_ = 10000000;
 var db_config = {
     'av' : _DB_AV_,

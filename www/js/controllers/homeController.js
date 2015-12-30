@@ -4,7 +4,8 @@
  */
 
 
-starterControllers.controller('DictHomeCtrl', function($scope, $ionicScrollDelegate, $timeout, $sce, LocalDataService,NotificationService, $ionicPlatform) {
+starterControllers.controller('DictHomeCtrl', function($scope, $ionicScrollDelegate, $timeout, $sce,
+Word, LocalDataService,NotificationService, $ionicPlatform) {
     $scope.hideBackButton = true;
     $scope.wordSelected = false;
     $scope.resultsCollection = [];
@@ -19,6 +20,7 @@ starterControllers.controller('DictHomeCtrl', function($scope, $ionicScrollDeleg
     * Select word
     */
     $scope.selectResult = function(wordIndex) {
+
         // word selected
         var lengthResults = $scope.resultsCollection.length;
         if(wordIndex <  lengthResults){
@@ -60,7 +62,7 @@ starterControllers.controller('DictHomeCtrl', function($scope, $ionicScrollDeleg
     $scope.selectNextWord = function(wordId){
         $scope.isFavWord = 0;
         LocalDataService.getCurrentAndNextWord(wordId, _DICT_TYPE_AV_).done(function(words){
-            $scope.selectedObject = words[0];
+            $scope.selectedObject = new Word(words[0]);
             if(words.length === 2){
                 $scope.nextObject = words[1];
             }
@@ -94,13 +96,13 @@ starterControllers.controller('DictHomeCtrl', function($scope, $ionicScrollDeleg
         }
         $scope.currentPage = pageNum;
         $scope.wordSelected = false;
-        var db = new DBAdapter();
+        var db = new DBAdapter(_DB_AV_);
         if($scope.keyword !== '' && $scope.keyword.length >= 1){
             db.search($scope.keyword, $scope.currentPage, MAX_NUMBER_WORDS_SEARCH).done(function(result) {
                 var resultLength = result.rows.length;
                 for (var i = 0; i < resultLength; i++) {
-                    var row = result.rows.item(i);
-                    $scope.resultsCollection.push(row);
+                    var word = new Word(result.rows.item(i));
+                    $scope.resultsCollection.push(word);
                 }
                 if(resultLength < MAX_NUMBER_WORDS_SEARCH){
                     $scope.hasNextPage = false;
@@ -117,14 +119,19 @@ starterControllers.controller('DictHomeCtrl', function($scope, $ionicScrollDeleg
     }
     $scope.characters = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','X','Y','Z','W'];
     $ionicPlatform.ready(function() {
-      
+            var DB = new DBAdapter(_DICT_TYPE_AV_);
+            if (!navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry)/)
+                || typeof cordova == 'undefined') {
+                DB.initDBWeb();
+            }
+
         // Platform stuff here.
         $timeout(function(){
             LocalDataService.getFavList().done(function(listWords){
                 var list = {};
                 for(var i = 0; i < listWords.length; i++){
                     var id = listWords[i].word_id;
-                    list[id] = listWords[i];
+                    list[id] = new Word(listWords[i]);
                 }
                 $scope.listFavWords = list;
             });
